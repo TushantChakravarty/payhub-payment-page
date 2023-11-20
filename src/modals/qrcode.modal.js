@@ -1,33 +1,28 @@
-import * as React from 'react';
-import Button from '@mui/joy/Button';
-import Modal from '@mui/joy/Modal';
-import ModalClose from '@mui/joy/ModalClose';
-import Typography from '@mui/joy/Typography';
-import Sheet from '@mui/joy/Sheet';
-import { QRCodeSVG } from 'qrcode.react';
-import './payment.css'
+import * as React from "react";
+import Button from "@mui/joy/Button";
+import Modal from "@mui/joy/Modal";
+import ModalClose from "@mui/joy/ModalClose";
+import Typography from "@mui/joy/Typography";
+import Sheet from "@mui/joy/Sheet";
+import { QRCodeSVG } from "qrcode.react";
+import "./payment.css";
 export function QrcodeModal({ open, setOpen, data }) {
   //   const [open, setOpen] = React.useState(false);
   const handleClose = (event, reason) => {
-    if (reason && reason == "backdropClick")
-      return;
-    setOpen(false)
-  }
+    if (reason && reason == "backdropClick") return;
+    setOpen(false);
+  };
   return (
-
-    <Modal
+    <div
       aria-labelledby="modal-title"
       aria-describedby="modal-desc"
-      open={open}
+      // open={open}
       onClose={() => handleClose}
-      sx={{ display: 'flex', marginTop: 40, justifyContent: 'center' }}
+      sx={{ display: "flex", marginTop: 40, justifyContent: "center" }}
     >
-
-
-      <div >
+      <div>
         <div class="modal-dialog ">
-          <div class="modal-content">
-
+          <div class="modal-content" style={{ border: "none" }}>
             <div class="modal-body p-0">
               <div class="container">
                 <div class="grid-wrapper grid-col-auto">
@@ -60,17 +55,45 @@ export function QrcodeModal({ open, setOpen, data }) {
                       </div>
                     </label> */}
                   <label for="radio-card-1" class="radio-card">
-                    <input type="radio" name="radio-card" id="radio-card-3" onClick={() => {
-                      //   window.location.href(data)
-
-                    }} />
+                    <input
+                      type="radio"
+                      name="radio-card"
+                      id="radio-card-3"
+                      onClick={() => {
+                        //   window.location.href(data)
+                      }}
+                    />
                     <div class="card-content-wrapper">
                       <span class="check-icon"></span>
-                      <div class="card-content text-center">
+                      <div
+                        class="card-content text-center"
+                        style={{
+                          display: "flex",
+                          width: "19.0625rem",
+                          // height: "20.25rem",
+                          padding: "3.5625rem 2.9375rem 3.5625rem 3rem",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexShrink: 0,
+                          boxShadow:
+                            "2px 15px 25px 0px rgba(107, 114, 128, 0.06)",
+                        }}
+                      >
                         {/* <img src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202102/phonepe_660_050221042103.jpg?size=1200:675"
                             class="img-fluid" /> */}
-                        <QRCodeSVG value={data} />
-                        <h4>Scan the QR code above to complete the transaction</h4>
+                        <QRCodeSVG
+                          value={data}
+                          size={210}
+                          style={{
+                            filter: open
+                              ? "blur(0)"
+                              : "blur(22.299999237060547px)",
+                          }}
+                        />
+                        {/* <h4>
+                          Scan the QR code above to complete the transaction
+                        </h4> */}
                       </div>
                     </div>
                   </label>
@@ -86,11 +109,10 @@ export function QrcodeModal({ open, setOpen, data }) {
                         </div>
                       </div>
                     </label> */}
-
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
+            {/* <div class="modal-footer">
             <button type="button" class="btn-outline-light m-0" data-dismiss="modal" aria-label="Close" onClick={() => {
                 // setOpen(false)
                 window.location.replace(data)
@@ -100,12 +122,11 @@ export function QrcodeModal({ open, setOpen, data }) {
                 setOpen(false)
               }}>Cancel</button>
 
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
-    </Modal>
-
+    </div>
   );
 }
 /**
