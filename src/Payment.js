@@ -218,7 +218,7 @@ export default function Payments() {
           size="md"
           variant="solid"
         >
-          View Qr Code
+          View QR Code
         </Button>
 
         <Button
@@ -241,7 +241,7 @@ export default function Payments() {
         </Button>
       </div>
 
-      <div
+      {/* <div
         style={{
           width: "100%",
           display: "flex",
@@ -273,7 +273,7 @@ export default function Payments() {
           This is a single-use code for one time payment only. Go back and retry
           in case of failure
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }
