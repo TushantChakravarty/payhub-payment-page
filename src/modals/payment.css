@@ -1,30 +1,30 @@
-.badan{
-	height:100vh;
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	background:radial-gradient(circle at 75% 50%, #BFDCE5 25%, #F5E9CF 75%);
-} 
-button.btn {
-	background-color:#2B3467;
-	color:white;
-	height:42px;
+.badan {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 75% 50%, #bfdce5 25%, #f5e9cf 75%);
 }
-button.btn:hover{
-	background-color:#3E54AC;
-	color:white;
-	height:42px;
+button.btn {
+  background-color: #2b3467;
+  color: white;
+  height: 42px;
+}
+button.btn:hover {
+  background-color: #3e54ac;
+  color: white;
+  height: 42px;
 }
 .modal-header {
-  background-color: #2B3467;
+  background-color: #2b3467;
   color: white;
 }
-.modal-header > button{
+.modal-header > button {
   color: white;
 }
 label.radio-card {
   cursor: pointer;
-  margin: .5em;
+  margin: 0.5em;
 }
 label.radio-card .card-content-wrapper {
   background: #fff;
@@ -33,7 +33,7 @@ label.radio-card .card-content-wrapper {
   box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.04);
   transition: 200ms linear;
   position: relative;
-	 min-width: 100px;
+  min-width: 100px;
 }
 label.radio-card .check-icon {
   width: 20px;
@@ -57,24 +57,32 @@ label.radio-card .check-icon:before {
   transition: 200ms linear;
   opacity: 0;
 }
-label.radio-card input[type=radio] {
+label.radio-card input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-label.radio-card input[type=radio]:checked + .card-content-wrapper {
-  box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.5), 0 0 0 2px #3057d5;
+label.radio-card input[type="radio"]:checked + .card-content-wrapper {
+  box-shadow:
+    0 2px 4px 0 rgba(219, 215, 215, 0.5),
+    0 0 0 2px #3057d5;
 }
-label.radio-card input[type=radio]:checked + .card-content-wrapper .check-icon {
+label.radio-card
+  input[type="radio"]:checked
+  + .card-content-wrapper
+  .check-icon {
   background: #3057d5;
   border-color: #3057d5;
   transform: scale(1.2);
 }
-label.radio-card input[type=radio]:checked + .card-content-wrapper .check-icon:before {
+label.radio-card
+  input[type="radio"]:checked
+  + .card-content-wrapper
+  .check-icon:before {
   transform: scale(1);
   opacity: 1;
 }
-label.radio-card input[type=radio]:focus + .card-content-wrapper .check-icon {
+label.radio-card input[type="radio"]:focus + .card-content-wrapper .check-icon {
   box-shadow: 0 0 0 4px rgba(48, 86, 213, 0.2);
   border-color: #3056d5;
 }
@@ -86,7 +94,7 @@ label.radio-card .card-content h4 {
   letter-spacing: -0.24px;
   text-align: center;
   color: #1f2949;
-		margin: 0;
+  margin: 0;
 }
 label.radio-card .card-content h5 {
   font-size: 14px;
@@ -94,20 +102,50 @@ label.radio-card .card-content h5 {
   text-align: center;
   color: #686d73;
 }
-.card-content > img{
-	max-height:35px;
+.card-content > img {
+  max-height: 64px;
 }
-.modal-footer > button{
-	width:50%;
-	height:50px;
-	border:0;
-	color:#222;
+.modal-footer > button {
+  width: 50%;
+  height: 50px;
+  border: 0;
+  color: #222;
 }
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #2B3467!important;
+  background-color: #2b3467 !important;
 }
 
 .btn-outline-light:hover {
-  color: #cecece!important;
+  color: #cecece !important;
+}
+
+@media (min-width: 475px) {
+  .wrapper {
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .buttonContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem;
+    padding: 0.5rem;
+    border: none;
+  }
+
+  .button {
+    border-radius: 10;
+    width: 20.4375rem;
+    /* width: "100%", */
+    padding: 0.75rem 1rem;
+    border: 1px solid black;
+  }
 }

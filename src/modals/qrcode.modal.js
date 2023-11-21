@@ -1,9 +1,4 @@
 import * as React from "react";
-import Button from "@mui/joy/Button";
-import Modal from "@mui/joy/Modal";
-import ModalClose from "@mui/joy/ModalClose";
-import Typography from "@mui/joy/Typography";
-import Sheet from "@mui/joy/Sheet";
 import { QRCodeSVG } from "qrcode.react";
 import "./payment.css";
 export function QrcodeModal({ open, setOpen, data }) {

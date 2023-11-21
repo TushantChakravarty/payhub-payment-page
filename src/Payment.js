@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-  pinwalletPayin,
-  processPayinRequestBazorpay,
-} from "./paymentController";
 import { PaymentModal } from "./modals/payment.modal";
 import { RedirectModal } from "./modals/redirect.modal";
 import { QrcodeModal } from "./modals/qrcode.modal";

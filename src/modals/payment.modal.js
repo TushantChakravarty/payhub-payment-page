@@ -1,11 +1,10 @@
 import * as React from "react";
 import Button from "@mui/joy/Button";
 import Modal from "@mui/joy/Modal";
-import ModalClose from "@mui/joy/ModalClose";
-import Typography from "@mui/joy/Typography";
-import Sheet from "@mui/joy/Sheet";
+
 import "./payment.css";
 import { QrcodeModal } from "./qrcode.modal";
+
 export function PaymentModal({ open, setOpen, data }) {
   const [openOr, setOpenQr] = React.useState(false);
   const handleClose = (event, reason) => {
@@ -18,14 +17,29 @@ export function PaymentModal({ open, setOpen, data }) {
       aria-describedby="modal-desc"
       open={open}
       onClose={() => handleClose}
-      sx={{ display: "flex", flexDirection: "column", marginTop: 40 }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        marginTop: 40,
+        width: "100%",
+      }}
     >
       <div>
         <div class="modal-dialog modal-lg">
-          <div class="modal-content">
+          <div
+            class="modal-content"
+            style={{ borderWidth: "0px", borderRadius: "8px" }}
+          >
             <div class="modal-body p-0">
               <div class="container">
-                <div class="grid-wrapper grid-col-auto">
+                <div
+                  class="grid-wrapper grid-col-auto wrapper"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                    alignItems: "center",
+                  }}
+                >
                   <label for="radio-card-1" class="radio-card">
                     <input
                       type="radio"
@@ -42,6 +56,7 @@ export function PaymentModal({ open, setOpen, data }) {
                           src="https://telugu.economictimes.com/thumb/msid-94681942,width-540,height-405,resizemode-75/paytm-logo-94681942.jpg"
                           alt="PayTM"
                           class="img-fluid"
+                          style={{ width: "4rem", height: "3rem" }}
                         />
                         <h4>PayTM</h4>
                       </div>
@@ -63,6 +78,7 @@ export function PaymentModal({ open, setOpen, data }) {
                           src="https://images.cnbctv18.com/wp-content/uploads/2019/06/Google-Pay-Tez-728x573.jpeg?impolicy=website&width=617&height=264"
                           alt="Gpay"
                           class="img-fluid"
+                          style={{ width: "4rem", height: "3rem" }}
                         />
                         <h4>Gpay</h4>
                       </div>
@@ -84,6 +100,7 @@ export function PaymentModal({ open, setOpen, data }) {
                           src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202102/phonepe_660_050221042103.jpg?size=1200:675"
                           alt="PhonePe"
                           class="img-fluid"
+                          style={{ width: "4rem", height: "3rem" }}
                         />
                         <h4>PhonePe</h4>
                       </div>
@@ -104,28 +121,60 @@ export function PaymentModal({ open, setOpen, data }) {
                 </div>
               </div>
             </div>
-            <div class="modal-footer justify-content-end p-0 mt-3">
+            <div
+              class="modal-footer justify-content-end p-0 mt-3 buttonContainer"
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                flexDirection: "column-reverse",
+                gap: "1rem",
+                alignItems: "center",
+                margin: "1rem",
+                padding: ".5rem",
+                border: "none",
+              }}
+            >
               <Button
                 type="button"
-                class="btn-outline-light m-0"
+                class="btn-outline-light m-0 button"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
                   setOpen(false);
                 }}
+                size="md"
+                variant="outlined"
+                style={{
+                  borderRadius: 10,
+                  // width: "20.4375rem",
+                  width: "100%",
+                  padding: ".75rem 1rem",
+                  border: "1px solid black",
+                }}
               >
-                Cancel
+                <p style={{ textAlign: "center", margin: "0" }}>Cancel</p>
               </Button>
               <Button
                 type="button"
-                class="btn-outline-primary m-0"
+                class="btn-outline-primary m-0 button"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
                   setOpenQr(true);
                 }}
+                size="md"
+                variant="solid"
+                style={{
+                  borderRadius: 10,
+                  // width: "20.4375rem",
+                  width: "100%",
+                  padding: ".75rem 1rem",
+                  backgroundColor: "#0069CA",
+                }}
               >
-                Show QR
+                <p style={{ color: "#ffff", textAlign: "center", margin: "0" }}>
+                  Show QR
+                </p>
               </Button>
             </div>
           </div>
