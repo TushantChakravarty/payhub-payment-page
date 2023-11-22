@@ -209,7 +209,7 @@ export default function Payments() {
             //   backgroundColor: "#0069CA",
           }}
           onClick={() => {
-            if (!enableQr) {
+            if (enableQr) {
               setOpenQr(!openQr);
             } else {
               alert("Please wait");
