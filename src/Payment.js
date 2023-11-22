@@ -6,7 +6,7 @@ import { Button } from "@mui/joy";
 import alertIcon from "./alert.png";
 
 export default function Payments() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [openConfirm, setConfirm] = React.useState(false);
   const [enableQr, setEnableQr] = useState(false);
   const [openQr, setOpenQr] = useState(false);
@@ -220,7 +220,7 @@ export default function Payments() {
           size="md"
           variant="solid"
         >
-          View Qr Code
+          View QR Code
         </Button>
 
         <Button
@@ -230,7 +230,7 @@ export default function Payments() {
           aria-label="Close"
           onClick={() => {
             // setOpen(false)
-            window.location.replace(data);
+            window.location.replace(qrcode);
           }}
           style={{
             borderRadius: 10,
@@ -244,7 +244,7 @@ export default function Payments() {
         </Button>
       </div>
 
-      <div
+      {/* <div
         style={{
           width: "100%",
           display: "flex",
@@ -271,7 +271,7 @@ export default function Payments() {
           This is a single-use code for one time payment only. Go back and retry
           in case of failure
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }
