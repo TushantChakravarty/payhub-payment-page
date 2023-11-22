@@ -148,7 +148,7 @@ export default function Payments() {
       >
         <h6
           style={{
-            fontFamily: "Roboto",
+            fontFamily: "Open Sans",
             fontSize: "1.25rem",
             fontStyle: "normal",
             fontWeight: "700",
@@ -168,12 +168,13 @@ export default function Payments() {
             width: "17rem",
             height: "3rem",
             textAlign: "center",
-            fontFamily: "Roboto",
+            fontFamily: "Open Sans",
             fontSize: "1rem",
             fontStyle: "normal",
             fontWeight: "600",
             lineHeight: "1.5rem",
             letterSpacing: "0.01875rem",
+            color: "#1D3A70",
           }}
         >
           Scan the QR code below to complete the transaction
@@ -206,7 +207,8 @@ export default function Payments() {
             borderRadius: 10,
             width: "20.4375rem",
             padding: "1rem 1.5rem",
-            //   backgroundColor: "#0069CA",
+            backgroundColor: "#08abf5",
+            fontFamily: "Open Sans",
           }}
           onClick={() => {
             if (!enableQr) {
@@ -234,6 +236,7 @@ export default function Payments() {
             borderRadius: 10,
             width: "20.4375rem",
             padding: "1rem 1.5rem",
+            fontFamily: "Open Sans",
           }}
           variant="outlined"
         >
@@ -252,22 +255,17 @@ export default function Payments() {
           gap: "1.5rem",
         }}
       >
-        <img
-          src={alertIcon}
-          alt="alert"
-          class="img-fluid"
-          style={{ height: "1.5rem", width: "1.5rem" }}
-        />
         <p
           style={{
             width: "17.6875rem",
-            fontFamily: "Roboto",
+            fontFamily: "Open Sans",
             fontSize: "0.75rem",
             fontStyle: "normal",
             fontWeight: "500",
             lineHeight: "1.125rem",
             letterSpacing: "0.01875rem",
             textAlign: "center",
+            color: "#1D3A70",
           }}
         >
           This is a single-use code for one time payment only. Go back and retry
