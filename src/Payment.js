@@ -141,7 +141,7 @@ export default function Payments() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1rem",
+        gap: "0rem",
       }}
     >
       <div
@@ -150,7 +150,7 @@ export default function Payments() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          margin: "3rem 0",
+          margin: "1rem 0",
           // gap: "2rem",
         }}
       >
@@ -160,7 +160,7 @@ export default function Payments() {
             // fontSize: "1.25rem",
             fontStyle: "normal",
             fontWeight: "700",
-            lineHeight: "1.5rem",
+            lineHeight: "1rem",
             letterSpacing: "0.01875rem",
             color: "#000000",
             padding: "1rem 0",
@@ -197,7 +197,7 @@ export default function Payments() {
           style={{
             borderRadius: 10,
             width: "16.75rem",
-            padding: "1rem 1.5rem",
+            padding: ".75rem",
             backgroundColor: "#08abf5",
             fontFamily: "Open Sans",
           }}
@@ -211,7 +211,7 @@ export default function Payments() {
           size="md"
           variant="solid"
         >
-          <p style={{ fontSize: "1.5rem", margin: "0", fontWeight: "700" }}>
+          <p style={{ fontSize: "1.25rem", margin: "0", fontWeight: "700" }}>
             View QR Code
           </p>
         </Button>
@@ -247,7 +247,7 @@ export default function Payments() {
           style={{
             borderRadius: 10,
             width: "16.75rem",
-            padding: "1rem 1.5rem",
+            padding: ".75rem",
             fontFamily: "Open Sans",
             backgroundColor: "#00B010",
           }}
@@ -255,7 +255,7 @@ export default function Payments() {
         >
           <p
             style={{
-              fontSize: "1.5rem",
+              fontSize: "1.25rem",
               margin: "0",
               fontWeight: "bold",
             }}
