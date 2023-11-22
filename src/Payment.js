@@ -202,7 +202,7 @@ export default function Payments() {
             fontFamily: "Open Sans",
           }}
           onClick={() => {
-            if (!enableQr) {
+            if (enableQr) {
               setOpenQr(!openQr);
             } else {
               alert("Please wait");
