@@ -135,7 +135,15 @@ export default function Payments() {
     };
   }, []);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "1rem",
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -143,23 +151,23 @@ export default function Payments() {
           alignItems: "center",
           flexDirection: "column",
           margin: "3rem 0",
-          gap: "2rem",
+          // gap: "2rem",
         }}
       >
-        <h6
+        <h1
           style={{
             fontFamily: "Open Sans",
-            fontSize: "1.25rem",
+            // fontSize: "1.25rem",
             fontStyle: "normal",
             fontWeight: "700",
             lineHeight: "1.5rem",
             letterSpacing: "0.01875rem",
-            color: "#1D3A70",
+            color: "#000000",
             padding: "1rem 0",
           }}
         >
-          Scan QR Code
-        </h6>
+          Scan QR
+        </h1>
 
         {/* <h1>Payhub Payments</h1> */}
 
@@ -174,10 +182,10 @@ export default function Payments() {
             fontWeight: "600",
             lineHeight: "1.5rem",
             letterSpacing: "0.01875rem",
-            color: "#1D3A70",
+            color: "#000000",
           }}
         >
-          Scan the QR code below to complete the transaction
+          To complete payment Scan QR code or click pay
         </p>
       </div>
 
@@ -185,27 +193,10 @@ export default function Payments() {
       <RedirectModal open={openConfirm} setOpen={setConfirm} data={redirect} />
 
       <div>
-        <QrcodeModal open={openQr} setOpen={setOpenQr} data={qrcode} />
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          flexDirection: "column",
-          height: "3rem",
-          padding: "0.75rem 1.5rem",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "0.625rem",
-          flexShrink: "0",
-          margin: ".69rem 0 2rem 0",
-        }}
-      >
         <Button
           style={{
             borderRadius: 10,
-            width: "20.4375rem",
+            width: "16.75rem",
             padding: "1rem 1.5rem",
             backgroundColor: "#08abf5",
             fontFamily: "Open Sans",
@@ -220,9 +211,30 @@ export default function Payments() {
           size="md"
           variant="solid"
         >
-          View QR Code
+          <p style={{ fontSize: "1.5rem", margin: "0", fontWeight: "700" }}>
+            View QR Code
+          </p>
         </Button>
+      </div>
 
+      <div>
+        <QrcodeModal open={openQr} setOpen={setOpenQr} data={qrcode} />
+      </div>
+
+      <div
+      // style={{
+      //   display: "flex",
+      //   width: "100%",
+      //   flexDirection: "column",
+      //   height: "3rem",
+      //   padding: "0.75rem 1.5rem",
+      //   justifyContent: "center",
+      //   alignItems: "center",
+      //   gap: "0.625rem",
+      //   flexShrink: "0",
+      //   margin: ".69rem 0 2rem 0",
+      // }}
+      >
         <Button
           //   type="button"
           class="btn-outline-light m-0"
@@ -234,13 +246,22 @@ export default function Payments() {
           }}
           style={{
             borderRadius: 10,
-            width: "20.4375rem",
+            width: "16.75rem",
             padding: "1rem 1.5rem",
             fontFamily: "Open Sans",
+            backgroundColor: "#00B010",
           }}
-          variant="outlined"
+          variant="solid"
         >
-          Pay
+          <p
+            style={{
+              fontSize: "1.5rem",
+              margin: "0",
+              fontWeight: "bold",
+            }}
+          >
+            PAY
+          </p>
         </Button>
       </div>
 
