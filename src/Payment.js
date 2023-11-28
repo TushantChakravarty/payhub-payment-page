@@ -100,6 +100,13 @@ export default function Payments() {
         console.log(decodeUri);
         window.location.replace(decodeUri);
       } else if (gateway == "payhubpt") {
+        if (window?.navigator?.platform == "iPhone") {
+          setGatewayData(upiData);
+          setQrcode(upi);
+          setEnableQr(true);
+          setOpen(true);
+          return
+        }
         setEnableQr(true);
         const decodeUri = decodeURIComponent(qr);
         setGatewayData(decodeUri);
