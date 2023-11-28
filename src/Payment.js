@@ -36,7 +36,7 @@ export default function Payments() {
     txId: txId,
   };
   const upiData = {
-    phonepeurl: phonepe,
+    phonepeurl: decodeURIComponent(phonepe),
     paytmurl: paytm,
     gpayurl: gpay,
   };

@@ -84,11 +84,14 @@ export function PaymentModal({ open, setOpen, data }) {
                       </div>
                     </div>
                   </label>
-                  <label for="radio-card-3" class="radio-card">
+                  <label for="radio-card-3" class="radio-card" onClick={()=>{
+                                            window.location.replace(data.phonepeurl);
+
+                  }}>
                     <input
                       type="radio"
                       name="radio-card"
-                      id="radio-card-3"
+                      id="radio-card-2"
                       onClick={() => {
                         window.location.replace(data.phonepeurl);
                       }}
