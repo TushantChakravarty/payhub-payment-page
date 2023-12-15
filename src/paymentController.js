@@ -1,3 +1,5 @@
+import { apiUrl } from "./config";
+
 export const processPayinRequestBazorpay =async  (data)=>{
     
     const txId = Math.floor(Math.random()*90000) + 10000;
@@ -54,4 +56,30 @@ export const processPayinRequestBazorpay =async  (data)=>{
           console.log(error)
          })
       return response
+}
+
+export async function checkPageExpiry(token)
+{
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin' : '*',
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    },
+    body: JSON.stringify({
+        "token":token
+      })  
+  })
+     .then(resp => resp.json())
+     .then(json =>{
+       console.log(json)
+       if(json)
+       return json
+      return false
+      })
+     .catch((error)=>{
+      console.log(error)
+     })
+  return response 
 }

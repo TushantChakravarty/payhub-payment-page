@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route ,Link, Routes} from "react-router-dom";
 import Payments from './Payment';
+import LinkExpired from './pages/expired';
 
 function App() {
   return (
@@ -9,9 +10,7 @@ function App() {
      <Router>
   <Routes>
   <Route exact path="/" element={<Payments/>} />
-    {/* <Route exact path="page1" element={<Page1 />} />
-    <Route exact path="page2" element={<Page2 />} />
-    <Route exact path="page3" element={<Page3 />} /> */}
+    <Route exact path="expired" element={<LinkExpired />} />
   </Routes>
 </Router>
     </div>

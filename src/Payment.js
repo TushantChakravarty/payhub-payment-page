@@ -4,6 +4,8 @@ import { RedirectModal } from "./modals/redirect.modal";
 import { QrcodeModal } from "./modals/qrcode.modal";
 import { Button } from "@mui/joy";
 import alertIcon from "./alert.png";
+import { checkPageExpiry } from "./paymentController";
+import { Router, useNavigate } from "react-router-dom";
 
 export default function Payments() {
   const [open, setOpen] = React.useState(false);
@@ -13,6 +15,8 @@ export default function Payments() {
   const [qrcode, setQrcode] = useState("");
   const [gatewayData, setGatewayData] = React.useState();
   const urlParams = new URLSearchParams(window.location.search);
+  const navigate = useNavigate();
+
   let amount = urlParams.get("amount");
   let email = urlParams.get("email");
   let username = urlParams.get("username");
@@ -24,6 +28,7 @@ export default function Payments() {
   let gpay = urlParams.get("gpay");
   let paytm = urlParams.get("paytm");
   let upi = urlParams.get("upi");
+  let token = urlParams.get("token");
 
   let redirect = urlParams.get("url");
   console.log("platform is: ", window?.navigator?.platform);
@@ -41,22 +46,21 @@ export default function Payments() {
     gpayurl: gpay,
   };
 
-  //"http://localhost:3000/?amount=100&email=tushant2909@gmail.com&phone=9340079982&username=tushant"
-  console.log(
-    "code",
-    amount,
-    email,
-    username,
-    phone,
-    txId,
-    redirect,
-    phonepe,
-    gpay,
-    paytm,
-    upi
-  );
+  
   console.log(amount);
   useEffect(() => {
+    checkPageExpiry(token)
+    .then((response)=>{
+      if(response.responseCode!==200)
+      {
+        
+        navigate('/expired')
+        return alert('Link Expired')
+      }
+    }).catch((error)=>{
+      navigate('/expired')
+      console.log('error',error)
+    })
     if (data.amount != null) {
       if (gateway == "payhubb") {
         // processPayinRequestBazorpay(data)
