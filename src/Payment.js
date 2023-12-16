@@ -47,7 +47,7 @@ export default function Payments() {
   };
 
   
-  console.log(amount);
+  console.log(token);
   useEffect(() => {
     checkPageExpiry(token)
     .then((response)=>{
