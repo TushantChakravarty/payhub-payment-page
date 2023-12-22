@@ -33,7 +33,7 @@ export default function Payments() {
   const [gatewayData, setGatewayData] = React.useState();
   const urlParams = new URLSearchParams(window.location.search);
   const navigate = useNavigate();
-  const [countdown, setCountdown] = useState("6:00");
+  const [paymentTimeOut, setPaymentTimeOut] = useState(100);
 
   let amount = urlParams.get("amount");
   let email = urlParams.get("email");
@@ -175,13 +175,16 @@ export default function Payments() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setCountdown((prev) => prev++);
-  //   }, 1000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (paymentTimeOut > 0) setPaymentTimeOut(paymentTimeOut - 1);
+    }, 1000);
 
-  //   return () => clearInterval(intervalId);
-  // }, []);
+    return () => {
+      clearTimeout(timer);
+      setTimeout(() => {}, 0); // hack to prevent memory leak
+    }; // return with cleanup function
+  }, [paymentTimeOut]);
 
   return (
     <div
@@ -335,7 +338,7 @@ export default function Payments() {
           Checking the payment status...
         </p>
         <p style={{ fontSize: "22px", fontWeight: "600", color: "#39A454" }}>
-          {countdown}
+          {paymentTimeOut.toFixed(2)}
         </p>
       </div>
 
