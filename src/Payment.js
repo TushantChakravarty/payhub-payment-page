@@ -182,7 +182,7 @@ export default function Payments() {
 
     return () => {
       clearTimeout(timer);
-      setTimeout(() => {}, 0); // hack to prevent memory leak
+      setTimeout(() => {}, 0);
     }; // return with cleanup function
   }, [paymentTimeOut]);
 
