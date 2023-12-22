@@ -2,20 +2,38 @@ import React, { useEffect, useState } from "react";
 import { PaymentModal } from "./modals/payment.modal";
 import { RedirectModal } from "./modals/redirect.modal";
 import { QrcodeModal } from "./modals/qrcode.modal";
-import { Button } from "@mui/joy";
+import { Box, Button, Divider } from "@mui/joy";
 import alertIcon from "./alert.png";
 import { checkPageExpiry } from "./paymentController";
 import { Router, useNavigate } from "react-router-dom";
+import googlePay from "./images/google-pay.png";
+import payTm from "./images/paytm.png";
+import phonePe from "./images/PhonePe-Logo.png";
+import payHub from "./images/payhub-black-transformed.png";
+
+const features = [
+  { id: 1, desc: "OPEN YOUR PAYMENT APP" },
+  { id: 2, desc: "SCAN THIS QR CODE" },
+  { id: 3, desc: "VERIFY THE PAYMENT DETAILS" },
+  { id: 4, desc: "CONFIRM THE TRANSACTION" },
+];
+
+const payMethods = [
+  { id: 1, icon: googlePay },
+  { id: 2, icon: payTm },
+  { id: 3, icon: phonePe },
+];
 
 export default function Payments() {
   const [open, setOpen] = React.useState(false);
   const [openConfirm, setConfirm] = React.useState(false);
   const [enableQr, setEnableQr] = useState(false);
-  const [openQr, setOpenQr] = useState(false);
+  const [openQr, setOpenQr] = useState(true);
   const [qrcode, setQrcode] = useState("");
   const [gatewayData, setGatewayData] = React.useState();
   const urlParams = new URLSearchParams(window.location.search);
   const navigate = useNavigate();
+  const [countdown, setCountdown] = useState("6:00");
 
   let amount = urlParams.get("amount");
   let email = urlParams.get("email");
@@ -45,22 +63,19 @@ export default function Payments() {
     paytmurl: paytm,
     gpayurl: gpay,
   };
-
-  
   console.log(token);
   useEffect(() => {
     checkPageExpiry(token)
-    .then((response)=>{
-      if(response.responseCode!==200)
-      {
-        
-        navigate('/expired')
-        return alert('Link Expired')
-      }
-    }).catch((error)=>{
-      navigate('/expired')
-      console.log('error',error)
-    })
+      .then((response) => {
+        if (response.responseCode !== 200) {
+          // navigate("/expired");
+          // return alert("Link Expired");
+        }
+      })
+      .catch((error) => {
+        // navigate('/expired')
+        console.log("error", error);
+      });
     if (data.amount != null) {
       if (gateway == "payhubb") {
         // processPayinRequestBazorpay(data)
@@ -95,7 +110,7 @@ export default function Payments() {
           setQrcode(upi);
           setEnableQr(true);
           setOpen(true);
-          return
+          return;
         }
         setEnableQr(true);
         const decodeUri = decodeURIComponent(qr);
@@ -116,7 +131,7 @@ export default function Payments() {
           setQrcode(upi);
           setEnableQr(true);
           setOpen(true);
-          return
+          return;
         }
         setEnableQr(true);
         const decodeUri = decodeURIComponent(qr);
@@ -130,7 +145,7 @@ export default function Payments() {
           setQrcode(upi);
           setEnableQr(true);
           setOpen(true);
-          return
+          return;
         }
         setEnableQr(true);
         const decodeUri = decodeURIComponent(qr);
@@ -159,6 +174,15 @@ export default function Payments() {
       window.removeEventListener("popstate", handleLocationChange);
     };
   }, []);
+
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCountdown((prev) => prev++);
+  //   }, 1000);
+
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
   return (
     <div
       style={{
@@ -171,46 +195,147 @@ export default function Payments() {
     >
       <div
         style={{
+          padding: "2rem 1rem",
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           flexDirection: "column",
-          margin: "1rem 0",
-          // gap: "2rem",
+          gap: "1rem",
         }}
       >
-        <h1
+        <div
           style={{
-            fontFamily: "Open Sans",
-            // fontSize: "1.25rem",
-            fontStyle: "normal",
-            fontWeight: "700",
-            lineHeight: "1rem",
-            letterSpacing: "0.01875rem",
-            color: "#000000",
-            padding: "1rem 0",
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          Scan QR
-        </h1>
+          <p
+            style={{
+              position: "absolute",
+              fontSize: "8px",
+              fontWeight: "bold",
+              top: "-0.75rem",
+              left: "7rem",
+            }}
+          >
+            Powered by PayHub
+          </p>
+          <img
+            src={payHub}
+            alt="brand"
+            style={{
+              width: "10rem",
+            }}
+          />
+        </div>
+        <Divider sx={{ height: ".25rem", width: "380px" }} />
+      </div>
 
-        {/* <h1>Payhub Payments</h1> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          padding: "0 1rem",
+          gap: "1rem",
+        }}
+      >
+        {features.map((item, index) => {
+          return (
+            <div
+              key={index}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
 
-        <p
-          style={{
-            width: "17rem",
-            height: "3rem",
-            textAlign: "center",
-            fontFamily: "Open Sans",
-            fontSize: "1rem",
-            fontStyle: "normal",
-            fontWeight: "600",
-            lineHeight: "1.5rem",
-            letterSpacing: "0.01875rem",
-            color: "#000000",
-          }}
-        >
-          To complete payment Scan QR code or click pay
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "30px",
+                    height: "30px",
+                    border: "1px solid #000",
+                    borderRadius: "50%",
+                    background: "#000",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "#ffffff",
+                      alignSelf: "center",
+                      fontSize: "14px",
+                      margin: "0",
+                    }}
+                  >
+                    {item.id}
+                  </p>
+                </div>
+                <p
+                  style={{
+                    fontSize: "10px",
+                    fontStyle: "normal",
+                    width: "5rem",
+                    height: "2rem",
+                    color: "#555555",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {item.desc}
+                </p>
+              </div>
+              {features.length - 1 > index && (
+                <div
+                  style={{
+                    position: "absolute",
+                    width: "4rem",
+                    height: "6px",
+                    left: "3rem",
+                    top: "1rem",
+                  }}
+                >
+                  {" "}
+                  <Divider
+                    style={{
+                      width: "6rem",
+                      background: "#E3E3E3",
+                      zIndex: -1,
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: ".5rem",
+          margin: "1.5rem 0",
+        }}
+      >
+        <p style={{ fontSize: "22px", fontWeight: "600" }}>
+          Checking the payment status...
+        </p>
+        <p style={{ fontSize: "22px", fontWeight: "600", color: "#39A454" }}>
+          {countdown}
         </p>
       </div>
 
@@ -218,32 +343,28 @@ export default function Payments() {
       <RedirectModal open={openConfirm} setOpen={setConfirm} data={redirect} />
 
       <div>
-        <Button
-          style={{
-            borderRadius: 10,
-            width: "16.75rem",
-            padding: ".75rem",
-            backgroundColor: "#08abf5",
-            fontFamily: "Open Sans",
-          }}
-          onClick={() => {
-            if (enableQr) {
-              setOpenQr(!openQr);
-            } else {
-              alert("Please wait");
-            }
-          }}
-          size="md"
-          variant="solid"
-        >
-          <p style={{ fontSize: "1.25rem", margin: "0", fontWeight: "700" }}>
-            View QR Code
-          </p>
-        </Button>
+        <QrcodeModal open={openQr} setOpen={setOpenQr} data={qrcode} />
       </div>
 
-      <div>
-        <QrcodeModal open={openQr} setOpen={setOpenQr} data={qrcode} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
+        {payMethods.map((image) => {
+          return (
+            <div key={image.id}>
+              <img
+                src={image.icon}
+                alt="payment method"
+                style={{ width: "6rem" }}
+              />
+            </div>
+          );
+        })}
       </div>
 
       <div
@@ -262,7 +383,7 @@ export default function Payments() {
       >
         <Button
           //   type="button"
-          class="btn-outline-light m-0"
+          className="btn-outline-light m-0"
           data-dismiss="modal"
           aria-label="Close"
           onClick={() => {
@@ -274,7 +395,7 @@ export default function Payments() {
             width: "16.75rem",
             padding: ".75rem",
             fontFamily: "Open Sans",
-            backgroundColor: "#00B010",
+            backgroundColor: "#4286F5",
           }}
           variant="solid"
         >

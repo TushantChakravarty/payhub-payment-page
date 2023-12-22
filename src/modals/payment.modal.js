@@ -25,22 +25,22 @@ export function PaymentModal({ open, setOpen, data }) {
       }}
     >
       <div>
-        <div class="modal-dialog modal-lg">
+        <div className="modal-dialog modal-lg">
           <div
-            class="modal-content"
+            className="modal-content"
             style={{ borderWidth: "0px", borderRadius: "8px" }}
           >
-            <div class="modal-body p-0">
-              <div class="container">
+            <div className="modal-body p-0">
+              <div className="container">
                 <div
-                  class="grid-wrapper grid-col-auto wrapper"
+                  className="grid-wrapper grid-col-auto wrapper"
                   style={{
                     display: "flex",
                     justifyContent: "space-around",
                     alignItems: "center",
                   }}
                 >
-                  <label for="radio-card-1" class="radio-card">
+                  <label for="radio-card-1" className="radio-card">
                     <input
                       type="radio"
                       name="radio-card"
@@ -49,20 +49,20 @@ export function PaymentModal({ open, setOpen, data }) {
                         window.location.replace(data.paytmurl);
                       }}
                     />
-                    <div class="card-content-wrapper">
-                      <span class="check-icon"></span>
-                      <div class="card-content text-center">
+                    <div className="card-content-wrapper">
+                      <span className="check-icon"></span>
+                      <div className="card-content text-center">
                         <img
                           src="https://telugu.economictimes.com/thumb/msid-94681942,width-540,height-405,resizemode-75/paytm-logo-94681942.jpg"
                           alt="PayTM"
-                          class="img-fluid"
+                          className="img-fluid"
                           style={{ width: "4rem", height: "3rem" }}
                         />
                         <h4>PayTM</h4>
                       </div>
                     </div>
                   </label>
-                  <label for="radio-card-2" class="radio-card">
+                  <label for="radio-card-2" className="radio-card">
                     <input
                       type="radio"
                       name="radio-card"
@@ -71,23 +71,26 @@ export function PaymentModal({ open, setOpen, data }) {
                         window.location.replace(data.gpayurl);
                       }}
                     />
-                    <div class="card-content-wrapper">
-                      <span class="check-icon"></span>
-                      <div class="card-content text-center">
+                    <div className="card-content-wrapper">
+                      <span className="check-icon"></span>
+                      <div className="card-content text-center">
                         <img
                           src="https://images.cnbctv18.com/wp-content/uploads/2019/06/Google-Pay-Tez-728x573.jpeg?impolicy=website&width=617&height=264"
                           alt="Gpay"
-                          class="img-fluid"
+                          className="img-fluid"
                           style={{ width: "4rem", height: "3rem" }}
                         />
                         <h4>Gpay</h4>
                       </div>
                     </div>
                   </label>
-                  <label for="radio-card-3" class="radio-card" onClick={()=>{
-                                            window.location.replace(data.phonepeurl);
-
-                  }}>
+                  <label
+                    for="radio-card-3"
+                    className="radio-card"
+                    onClick={() => {
+                      window.location.replace(data.phonepeurl);
+                    }}
+                  >
                     <input
                       type="radio"
                       name="radio-card"
@@ -96,13 +99,13 @@ export function PaymentModal({ open, setOpen, data }) {
                         window.location.replace(data.phonepeurl);
                       }}
                     />
-                    <div class="card-content-wrapper">
-                      <span class="check-icon"></span>
-                      <div class="card-content text-center">
+                    <div className="card-content-wrapper">
+                      <span className="check-icon"></span>
+                      <div className="card-content text-center">
                         <img
                           src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202102/phonepe_660_050221042103.jpg?size=1200:675"
                           alt="PhonePe"
-                          class="img-fluid"
+                          className="img-fluid"
                           style={{ width: "4rem", height: "3rem" }}
                         />
                         <h4>PhonePe</h4>
@@ -110,13 +113,13 @@ export function PaymentModal({ open, setOpen, data }) {
                     </div>
                   </label>
 
-                  {/* <label for="radio-card-5" class="radio-card">
+                  {/* <label for="radio-card-5" className="radio-card">
                       <input type="radio" name="radio-card" id="radio-card-5" />
-                      <div class="card-content-wrapper">
-                        <span class="check-icon"></span>
-                        <div class="card-content text-center">
+                      <div className="card-content-wrapper">
+                        <span className="check-icon"></span>
+                        <div className="card-content text-center">
                           <img src="https://cdn-icons-png.flaticon.com/512/2175/2175515.png"
-                            class="img-fluid" />
+                            className="img-fluid" />
                           <h4>Others</h4>
                         </div>
                       </div>
@@ -125,7 +128,7 @@ export function PaymentModal({ open, setOpen, data }) {
               </div>
             </div>
             <div
-              class="modal-footer justify-content-end p-0 mt-3 buttonContainer"
+              className="modal-footer justify-content-end p-0 mt-3 buttonContainer"
               style={{
                 display: "flex",
                 justifyContent: "space-around",
@@ -139,7 +142,7 @@ export function PaymentModal({ open, setOpen, data }) {
             >
               <Button
                 type="button"
-                class="btn-outline-light m-0 button"
+                className="btn-outline-light m-0 button"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
@@ -159,7 +162,7 @@ export function PaymentModal({ open, setOpen, data }) {
               </Button>
               <Button
                 type="button"
-                class="btn-outline-primary m-0 button"
+                className="btn-outline-primary m-0 button"
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
