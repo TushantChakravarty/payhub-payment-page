@@ -65,6 +65,54 @@ export function QrcodeModal({ open, setOpen, data }) {
                     <div className="card-content-wrapper">
                       <span className="check-icon"></span>
                       <div
+                        style={{
+                          height: "6rem",
+                          position: "absolute",
+                          width: "6rem",
+                          borderTop: "10px solid #535353",
+                          borderLeft: "10px solid #535353",
+                          top: "3rem",
+                          left: "2.5rem",
+                          borderRadius: "9px",
+                        }}
+                      />
+                      <div
+                        style={{
+                          height: "6rem",
+                          position: "absolute",
+                          width: "6rem",
+                          borderBottom: "10px solid #535353",
+                          borderLeft: "10px solid #535353",
+                          bottom: "3rem",
+                          left: "2.5rem",
+                          borderRadius: "9px",
+                        }}
+                      />
+                      <div
+                        style={{
+                          height: "6rem",
+                          position: "absolute",
+                          width: "6rem",
+                          borderTop: "10px solid #535353",
+                          borderRight: "10px solid #535353",
+                          top: "3rem",
+                          right: "2.5rem",
+                          borderRadius: "9px",
+                        }}
+                      />
+                      <div
+                        style={{
+                          height: "6rem",
+                          position: "absolute",
+                          width: "6rem",
+                          borderBottom: "10px solid #535353",
+                          borderRight: "10px solid #535353",
+                          bottom: "3rem",
+                          right: "2.5rem",
+                          borderRadius: "9px",
+                        }}
+                      />
+                      <div
                         className="card-content text-center"
                         style={{
                           display: "flex",
