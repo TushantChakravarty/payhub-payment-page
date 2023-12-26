@@ -418,7 +418,7 @@ export default function Payments() {
       >
         <Button
           //   type="button"
-          className="btn-outline-light m-0"
+          className="btn-outline-light m-0 payButton"
           data-dismiss="modal"
           aria-label="Close"
           onClick={() => {
@@ -432,24 +432,9 @@ export default function Payments() {
             }
             window.location.replace(qrcode);
           }}
-          style={{
-            borderRadius: 10,
-            width: "16.75rem",
-            padding: ".75rem",
-            fontFamily: "Open Sans",
-            backgroundColor: "#4286F5",
-          }}
           variant="solid"
         >
-          <p
-            style={{
-              fontSize: "1.25rem",
-              margin: "0",
-              fontWeight: "bold",
-            }}
-          >
-            PAY
-          </p>
+          <p className="payButtonText">PAY</p>
         </Button>
       </div>
 

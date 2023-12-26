@@ -35,6 +35,20 @@
   margin-bottom: 1rem;
 }
 
+.payButton {
+  border-radius: 10;
+  width: 16.75rem;
+  padding: 0 0.75rem;
+  font-family: "Open Sans";
+  background-color: #4286f5;
+}
+
+.payButtonText {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 600px) {
   .image {
     width: 4rem;
@@ -70,6 +84,18 @@
     margin-trim: block;
     margin-bottom: 1rem;
   }
+  .payButton {
+    border-radius: 10;
+    width: 16.75rem;
+    padding: 0 0.75rem;
+    font-family: "Open Sans";
+    background-color: #4286f5;
+  }
+  .payButtonText {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: bold;
+  }
 }
 
 @media only screen and (min-width: 760px) {
@@ -97,5 +123,17 @@
     gap: 0.5rem;
     margin: 1.5rem 0;
     position: static;
+  }
+  .payButton {
+    border-radius: 10;
+    width: 16.75rem;
+    padding: 0.75rem;
+    font-family: "Open Sans";
+    background-color: #4286f5;
+  }
+  .payButtonText {
+    font-size: 1.25rem;
+    margin: 0;
+    font-weight: bold;
   }
 }
