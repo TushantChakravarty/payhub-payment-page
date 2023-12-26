@@ -363,10 +363,17 @@ export default function Payments() {
       </div>
 
       <div className="payment_status">
-        <p style={{ fontSize: "14px", fontWeight: "600" }}>
+        <p style={{ fontSize: "14px", fontWeight: "600", margin: 0 }}>
           Checking the payment status...
         </p>
-        <p style={{ fontSize: "14px", fontWeight: "600", color: "#39A454" }}>
+        <p
+          style={{
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#39A454",
+            margin: 0,
+          }}
+        >
           {formatTime(remainingTime)}
         </p>
       </div>

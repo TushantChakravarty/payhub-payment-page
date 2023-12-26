@@ -26,8 +26,13 @@
 .payment_status {
   display: flex;
   align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
-  margin: 1.5rem 0;
+  margin: 0rem 0;
+  position: relative;
+  z-index: 9;
+  margin-trim: block;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -57,10 +62,13 @@
   .payment_status {
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 0.5rem;
     margin: 0rem 0;
     position: relative;
     z-index: 9;
+    margin-trim: block;
+    margin-bottom: 1rem;
   }
 }
 
@@ -85,6 +93,7 @@
   .payment_status {
     display: flex;
     align-items: center;
+    flex-direction: row;
     gap: 0.5rem;
     margin: 1.5rem 0;
     position: static;
