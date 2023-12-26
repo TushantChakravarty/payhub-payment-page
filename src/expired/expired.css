@@ -1,0 +1,23 @@
+.expired_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+  width: 100dvw;
+  height: 100dvh;
+}
+
+.animation {
+  animation: blinkEffect 4s ease-in-out 0s infinite alternate-reverse;
+}
+
+@keyframes blinkEffect {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
