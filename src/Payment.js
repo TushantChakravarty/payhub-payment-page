@@ -11,6 +11,7 @@ import payTm from "./images/paytm.png";
 import phonePe from "./images/PhonePe-Logo.png";
 import payHub from "./images/payhub-black-transformed.png";
 import moment from "moment-timezone";
+import "./App.css";
 
 const features = [
   { id: 1, desc: "OPEN YOUR PAYMENT APP" },
@@ -50,7 +51,7 @@ export default function Payments() {
   let token = urlParams.get("token");
 
   let redirect = urlParams.get("url");
- // console.log("platform is: ", window?.navigator?.platform);
+  // console.log("platform is: ", window?.navigator?.platform);
 
   let data = {
     amount: amount,
@@ -69,8 +70,8 @@ export default function Payments() {
     checkPageExpiry(token)
       .then((response) => {
         if (response.responseCode !== 200) {
-           navigate("/expired");
-           return alert("Link Expired");
+          // navigate("/expired");
+          // return alert("Link Expired");
         }
       })
       .catch((error) => {
@@ -176,7 +177,6 @@ export default function Payments() {
     };
   }, []);
 
-
   useEffect(() => {
     const fetchData = () => {
       checkPaymentTime(token, txId)
@@ -191,21 +191,28 @@ export default function Payments() {
           const transactionTime = moment.tz(responseData, "Asia/Kolkata");
 
           const currentTime = moment();
-          const timeDifferenceInMinutes = transactionTime.diff(currentTime, 'minutes');
+          const timeDifferenceInMinutes = transactionTime.diff(
+            currentTime,
+            "minutes"
+          );
 
           if (timeDifferenceInMinutes <= 15) {
-            const targetTime = transactionTime.add(15, 'minutes').toDate().getTime();
+            const targetTime = transactionTime
+              .add(15, "minutes")
+              .toDate()
+              .getTime();
 
             const calculateRemainingTime = () => {
               const currentTime = new Date().getTime();
-              const timeDifferenceInSeconds = Math.floor((targetTime - currentTime) / 1000);
+              const timeDifferenceInSeconds = Math.floor(
+                (targetTime - currentTime) / 1000
+              );
 
               if (timeDifferenceInSeconds > 0) {
                 setRemainingTime(timeDifferenceInSeconds);
               } else {
                 setRemainingTime(0);
-                navigate('/expired')
-
+                navigate("/expired");
               }
             };
 
@@ -220,7 +227,7 @@ export default function Payments() {
         })
         .catch((error) => {
           // Handle errors
-           navigate('/expired')
+          navigate("/expired");
           console.log("error", error);
         });
     };
@@ -233,7 +240,6 @@ export default function Payments() {
     const seconds = timeInSeconds % 60;
     return `${minutes} mins and ${seconds} secs`;
   };
-
 
   return (
     <div
@@ -281,17 +287,10 @@ export default function Payments() {
             }}
           />
         </div>
-        <Divider sx={{ height: ".25rem", width: "380px" }} />
+        <Divider sx={{ height: ".25rem", width: "360px" }} />
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: "0 1rem",
-          gap: "1rem",
-        }}
-      >
+      <div className="features_container">
         {features.map((item, index) => {
           return (
             <div
@@ -316,7 +315,6 @@ export default function Payments() {
                 <div
                   style={{
                     display: "flex",
-
                     justifyContent: "center",
                     alignItems: "center",
                     width: "30px",
@@ -337,18 +335,7 @@ export default function Payments() {
                     {item.id}
                   </p>
                 </div>
-                <p
-                  style={{
-                    fontSize: "10px",
-                    fontStyle: "normal",
-                    width: "5rem",
-                    height: "2rem",
-                    color: "#555555",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {item.desc}
-                </p>
+                <p className={"feature_description"}>{item.desc}</p>
               </div>
               {features.length - 1 > index && (
                 <div
@@ -375,19 +362,12 @@ export default function Payments() {
         })}
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: ".5rem",
-          margin: "1.5rem 0",
-        }}
-      >
+      <div className="payment_status">
         <p style={{ fontSize: "15px", fontWeight: "600" }}>
           Checking the payment status...
         </p>
         <p style={{ fontSize: "15px", fontWeight: "600", color: "#39A454" }}>
-        {formatTime(remainingTime)}
+          {formatTime(remainingTime)}
         </p>
       </div>
 
@@ -409,11 +389,7 @@ export default function Payments() {
         {payMethods.map((image) => {
           return (
             <div key={image.id}>
-              <img
-                src={image.icon}
-                alt="payment method"
-                style={{ width: "6rem" }}
-              />
+              <img src={image.icon} alt="payment method" className="image" />
             </div>
           );
         })}
@@ -445,7 +421,7 @@ export default function Payments() {
               setQrcode(upi);
               setEnableQr(true);
               setOpen(true);
-              return
+              return;
             }
             window.location.replace(qrcode);
           }}

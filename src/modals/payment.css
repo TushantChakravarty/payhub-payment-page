@@ -149,3 +149,15 @@ label.radio-card .card-content h5 {
     border: 1px solid black;
   }
 }
+
+@media only screen and (min-width: 370px) {
+  .card-content-margin {
+    margin: -2rem 0;
+  }
+}
+
+@media only screen and (min-width: 760px) {
+  .card-content-margin {
+    margin: 0rem 0;
+  }
+}

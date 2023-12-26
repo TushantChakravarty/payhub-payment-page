@@ -62,7 +62,7 @@ export function QrcodeModal({ open, setOpen, data }) {
                         //   window.location.href(data)
                       }}
                     />
-                    <div className="card-content-wrapper">
+                    <div className="card-content-wrapper card-content-margin">
                       <span className="check-icon"></span>
                       <div
                         style={{
