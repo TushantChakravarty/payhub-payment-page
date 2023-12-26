@@ -27,7 +27,7 @@ const payMethods = [
 ];
 
 export default function Payments() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [openConfirm, setConfirm] = React.useState(false);
   const [enableQr, setEnableQr] = useState(false);
   const [openQr, setOpenQr] = useState(true);

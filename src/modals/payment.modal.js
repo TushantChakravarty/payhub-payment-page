@@ -4,6 +4,8 @@ import Modal from "@mui/joy/Modal";
 
 import "./payment.css";
 import { QrcodeModal } from "./qrcode.modal";
+import BHIMUPI from "../images/bhimupi.webp";
+import { Link } from "react-router-dom";
 
 export function PaymentModal({ open, setOpen, data }) {
   const [openOr, setOpenQr] = React.useState(false);
@@ -20,7 +22,7 @@ export function PaymentModal({ open, setOpen, data }) {
       sx={{
         display: "flex",
         flexDirection: "column",
-        marginTop: 40,
+        marginTop: 20,
         width: "100%",
       }}
     >
@@ -33,11 +35,32 @@ export function PaymentModal({ open, setOpen, data }) {
             <div className="modal-body p-0">
               <div className="container">
                 <div
-                  className="grid-wrapper grid-col-auto wrapper"
                   style={{
                     display: "flex",
-                    justifyContent: "space-around",
-                    alignItems: "center",
+                    flexDirection: "column",
+                    justifyItems: "flex-start",
+                    alignItems: "flex-start",
+                    padding: ".75rem",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "#D4DCDF",
+                      fontSize: "15px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Select your UPI App
+                  </p>
+                </div>
+                <div
+                  className="grid-wrapper grid-col-auto wrapper"
+                  style={{
+                    display: "grid",
+                    // placeItems: "center",
+                    gridTemplateColumns: "150px 150px",
+                    gridTemplateRows: "2fr",
+                    marginLeft: "1.25rem",
                   }}
                 >
                   <label for="radio-card-1" className="radio-card">
@@ -49,7 +72,38 @@ export function PaymentModal({ open, setOpen, data }) {
                         window.location.replace(data.paytmurl);
                       }}
                     />
-                    <div className="card-content-wrapper">
+                    <div
+                      className="card-content-wrapper"
+                      style={{
+                        boxShadow: "0 -16px 6px 0px rgba(0, 0, 0, 0.3)",
+                      }}
+                    >
+                      <span className="check-icon"></span>
+                      <div className="card-content text-center">
+                        <img
+                          src={BHIMUPI}
+                          alt="PayTM"
+                          className="img-fluid"
+                          style={{ width: "4rem", height: "3rem" }}
+                        />
+                      </div>
+                    </div>
+                  </label>
+                  <label for="radio-card-1" className="radio-card">
+                    <input
+                      type="radio"
+                      name="radio-card"
+                      id="radio-card-1"
+                      onClick={() => {
+                        window.location.replace(data.paytmurl);
+                      }}
+                    />
+                    <div
+                      className="card-content-wrapper"
+                      style={{
+                        boxShadow: "0 -16px 6px 0px rgba(0, 0, 0, 0.3)",
+                      }}
+                    >
                       <span className="check-icon"></span>
                       <div className="card-content text-center">
                         <img
@@ -58,7 +112,6 @@ export function PaymentModal({ open, setOpen, data }) {
                           className="img-fluid"
                           style={{ width: "4rem", height: "3rem" }}
                         />
-                        <h4>PayTM</h4>
                       </div>
                     </div>
                   </label>
@@ -71,7 +124,12 @@ export function PaymentModal({ open, setOpen, data }) {
                         window.location.replace(data.gpayurl);
                       }}
                     />
-                    <div className="card-content-wrapper">
+                    <div
+                      className="card-content-wrapper"
+                      style={{
+                        boxShadow: "0 -16px 6px 0px rgba(0, 0, 0, 0.3)",
+                      }}
+                    >
                       <span className="check-icon"></span>
                       <div className="card-content text-center">
                         <img
@@ -80,7 +138,6 @@ export function PaymentModal({ open, setOpen, data }) {
                           className="img-fluid"
                           style={{ width: "4rem", height: "3rem" }}
                         />
-                        <h4>Gpay</h4>
                       </div>
                     </div>
                   </label>
@@ -99,7 +156,12 @@ export function PaymentModal({ open, setOpen, data }) {
                         window.location.replace(data.phonepeurl);
                       }}
                     />
-                    <div className="card-content-wrapper">
+                    <div
+                      className="card-content-wrapper"
+                      style={{
+                        boxShadow: "0 -16px 6px 0px rgba(0, 0, 0, 0.3)",
+                      }}
+                    >
                       <span className="check-icon"></span>
                       <div className="card-content text-center">
                         <img
@@ -108,7 +170,6 @@ export function PaymentModal({ open, setOpen, data }) {
                           className="img-fluid"
                           style={{ width: "4rem", height: "3rem" }}
                         />
-                        <h4>PhonePe</h4>
                       </div>
                     </div>
                   </label>
@@ -155,41 +216,28 @@ export function PaymentModal({ open, setOpen, data }) {
                   // width: "20.4375rem",
                   width: "100%",
                   padding: ".75rem 1rem",
-                  border: "1px solid black",
+                  border: "1px solid #6099C4",
                 }}
               >
-                <p style={{ textAlign: "center", margin: "0" }}>Cancel</p>
-              </Button>
-              <Button
-                type="button"
-                className="btn-outline-primary m-0 button"
-                data-dismiss="modal"
-                aria-label="Close"
-                onClick={() => {
-                  setOpenQr(true);
-                }}
-                size="md"
-                variant="solid"
-                style={{
-                  borderRadius: 10,
-                  // width: "20.4375rem",
-                  width: "100%",
-                  padding: ".75rem 1rem",
-                  backgroundColor: "#0069CA",
-                }}
-              >
-                <p style={{ color: "#ffff", textAlign: "center", margin: "0" }}>
-                  Show QR
+                <p
+                  style={{
+                    textAlign: "center",
+                    margin: "0",
+                    textTransform: "uppercase",
+                    color: "#6099C4",
+                  }}
+                >
+                  other upi apps
                 </p>
               </Button>
             </div>
           </div>
         </div>
-        <QrcodeModal
+        {/* <QrcodeModal
           open={openOr}
           setOpen={setOpenQr}
           data={data ? data?.upiUrl : ""}
-        />
+        /> */}
       </div>
     </Modal>
   );
