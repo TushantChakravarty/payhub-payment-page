@@ -1,1 +1,1 @@
-export const apiUrl = "https://server.payhub.link/admin/verifypageexpirytoken"
+export const apiUrl = "https://server.payhub.link"

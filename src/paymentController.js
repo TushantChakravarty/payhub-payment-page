@@ -60,7 +60,7 @@ export const processPayinRequestBazorpay =async  (data)=>{
 
 export async function checkPageExpiry(token)
 {
-  const response = await fetch(apiUrl, {
+  const response = await fetch(`${apiUrl}/admin/verifypageexpirytoken`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -73,7 +73,33 @@ export async function checkPageExpiry(token)
   })
      .then(resp => resp.json())
      .then(json =>{
-       console.log(json)
+      // console.log(json)
+       if(json)
+       return json
+      return false
+      })
+     .catch((error)=>{
+      console.log(error)
+     })
+  return response 
+}
+export async function checkPaymentTime(token,id)
+{
+  const response = await fetch(`${apiUrl}/admin/getTransactionTime`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin' : '*',
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    },
+    body: JSON.stringify({
+        "token":token,
+        "transactionId":id
+      })  
+  })
+     .then(resp => resp.json())
+     .then(json =>{
+       //console.log(json)
        if(json)
        return json
       return false

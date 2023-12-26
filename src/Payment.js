@@ -4,13 +4,13 @@ import { RedirectModal } from "./modals/redirect.modal";
 import { QrcodeModal } from "./modals/qrcode.modal";
 import { Box, Button, Divider } from "@mui/joy";
 import alertIcon from "./alert.png";
-import { checkPageExpiry } from "./paymentController";
+import { checkPageExpiry, checkPaymentTime } from "./paymentController";
 import { Router, useNavigate } from "react-router-dom";
 import googlePay from "./images/google-pay.png";
 import payTm from "./images/paytm.png";
 import phonePe from "./images/PhonePe-Logo.png";
 import payHub from "./images/payhub-black-transformed.png";
-const initialPaymentTimeout = 15 * 60; // 15 minutes in seconds
+import moment from "moment-timezone";
 
 const features = [
   { id: 1, desc: "OPEN YOUR PAYMENT APP" },
@@ -34,7 +34,7 @@ export default function Payments() {
   const [gatewayData, setGatewayData] = React.useState();
   const urlParams = new URLSearchParams(window.location.search);
   const navigate = useNavigate();
-  const [paymentTimeOut, setPaymentTimeOut] = useState(initialPaymentTimeout);
+  const [remainingTime, setRemainingTime] = useState(0);
 
   let amount = urlParams.get("amount");
   let email = urlParams.get("email");
@@ -50,7 +50,7 @@ export default function Payments() {
   let token = urlParams.get("token");
 
   let redirect = urlParams.get("url");
-  console.log("platform is: ", window?.navigator?.platform);
+ // console.log("platform is: ", window?.navigator?.platform);
 
   let data = {
     amount: amount,
@@ -64,13 +64,13 @@ export default function Payments() {
     paytmurl: paytm,
     gpayurl: gpay,
   };
-  console.log(token);
+  //console.log(token);
   useEffect(() => {
     checkPageExpiry(token)
       .then((response) => {
         if (response.responseCode !== 200) {
-          // navigate("/expired");
-          // return alert("Link Expired");
+           navigate("/expired");
+           return alert("Link Expired");
         }
       })
       .catch((error) => {
@@ -176,23 +176,64 @@ export default function Payments() {
     };
   }, []);
 
+
+  useEffect(() => {
+    const fetchData = () => {
+      checkPaymentTime(token, txId)
+        .then((response) => {
+          if (response.responseCode !== 200) {
+            // Handle the case where responseCode is not 200
+            // navigate("/expired");
+            // return alert("Link Expired");
+          }
+
+          const responseData = response.responseData;
+          const transactionTime = moment.tz(responseData, "Asia/Kolkata");
+
+          const currentTime = moment();
+          const timeDifferenceInMinutes = transactionTime.diff(currentTime, 'minutes');
+
+          if (timeDifferenceInMinutes <= 15) {
+            const targetTime = transactionTime.add(15, 'minutes').toDate().getTime();
+
+            const calculateRemainingTime = () => {
+              const currentTime = new Date().getTime();
+              const timeDifferenceInSeconds = Math.floor((targetTime - currentTime) / 1000);
+
+              if (timeDifferenceInSeconds > 0) {
+                setRemainingTime(timeDifferenceInSeconds);
+              } else {
+                setRemainingTime(0);
+                navigate('/expired')
+
+              }
+            };
+
+            calculateRemainingTime();
+
+            const timer = setInterval(calculateRemainingTime, 1000);
+
+            return () => {
+              clearInterval(timer);
+            };
+          }
+        })
+        .catch((error) => {
+          // Handle errors
+           navigate('/expired')
+          console.log("error", error);
+        });
+    };
+
+    fetchData();
+  }, [token, txId]);
+
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
     return `${minutes} mins and ${seconds} secs`;
   };
 
-
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (paymentTimeOut > 0) setPaymentTimeOut(paymentTimeOut - 1);
-    }, 1000); // 1000 milliseconds = 1 second
-
-    return () => {
-      clearTimeout(timer);
-    }; // return with cleanup function
-  }, [paymentTimeOut]);
 
   return (
     <div
@@ -342,11 +383,11 @@ export default function Payments() {
           margin: "1.5rem 0",
         }}
       >
-        <p style={{ fontSize: "22px", fontWeight: "600" }}>
+        <p style={{ fontSize: "15px", fontWeight: "600" }}>
           Checking the payment status...
         </p>
-        <p style={{ fontSize: "22px", fontWeight: "600", color: "#39A454" }}>
-        {formatTime(paymentTimeOut)}
+        <p style={{ fontSize: "15px", fontWeight: "600", color: "#39A454" }}>
+        {formatTime(remainingTime)}
         </p>
       </div>
 
