@@ -1,1 +1,1 @@
-export const apiUrl = "https://server.payhub.link"
+export const apiUrl = "https://api.payhub.link"
