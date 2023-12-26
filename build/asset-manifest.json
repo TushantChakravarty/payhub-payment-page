@@ -1,12 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.abf63c8e.css",
-    "main.js": "/static/js/main.139db34e.js",
+    "main.js": "/static/js/main.753f0ec8.js",
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
     "static/media/inter-latin-ext-400-normal.woff": "/static/media/inter-latin-ext-400-normal.3ccf133441ba225afa51.woff",
+    "static/media/payhub-black-transformed.png": "/static/media/payhub-black-transformed.a46ebbea3db4316a79e7.png",
+    "static/media/PhonePe-Logo.png": "/static/media/PhonePe-Logo.34c9b61bec5e2aede0f8.png",
     "static/media/inter-latin-400-normal.woff": "/static/media/inter-latin-400-normal.662f290710a57b8dfbbd.woff",
     "static/media/inter-latin-ext-400-normal.woff2": "/static/media/inter-latin-ext-400-normal.3a7a76525d98d25962eb.woff2",
     "static/media/inter-latin-400-normal.woff2": "/static/media/inter-latin-400-normal.be7cb18dc7caf47cf7e9.woff2",
+    "static/media/google-pay.png": "/static/media/google-pay.851fc93336bdc00c0e63.png",
+    "static/media/paytm.png": "/static/media/paytm.46cb55d866212c07b99d.png",
     "static/media/alert.png": "/static/media/alert.d2b6776ed4acfcf480d5.png",
     "static/media/inter-cyrillic-ext-400-normal.woff": "/static/media/inter-cyrillic-ext-400-normal.3c63e27405d46e5051e9.woff",
     "static/media/inter-greek-400-normal.woff": "/static/media/inter-greek-400-normal.b31b8612d0c0c50eb73b.woff",
@@ -21,11 +25,11 @@
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
     "main.abf63c8e.css.map": "/static/css/main.abf63c8e.css.map",
-    "main.139db34e.js.map": "/static/js/main.139db34e.js.map",
+    "main.753f0ec8.js.map": "/static/js/main.753f0ec8.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.abf63c8e.css",
-    "static/js/main.139db34e.js"
+    "static/js/main.753f0ec8.js"
   ]
 }
