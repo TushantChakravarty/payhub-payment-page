@@ -10,6 +10,7 @@ import googlePay from "./images/google-pay.png";
 import payTm from "./images/paytm.png";
 import phonePe from "./images/PhonePe-Logo.png";
 import payHub from "./images/payhub-black-transformed.png";
+const initialPaymentTimeout = 15 * 60; // 15 minutes in seconds
 
 const features = [
   { id: 1, desc: "OPEN YOUR PAYMENT APP" },
@@ -33,7 +34,7 @@ export default function Payments() {
   const [gatewayData, setGatewayData] = React.useState();
   const urlParams = new URLSearchParams(window.location.search);
   const navigate = useNavigate();
-  const [paymentTimeOut, setPaymentTimeOut] = useState(100);
+  const [paymentTimeOut, setPaymentTimeOut] = useState(initialPaymentTimeout);
 
   let amount = urlParams.get("amount");
   let email = urlParams.get("email");
@@ -175,14 +176,21 @@ export default function Payments() {
     };
   }, []);
 
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes} mins and ${seconds} secs`;
+  };
+
+
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (paymentTimeOut > 0) setPaymentTimeOut(paymentTimeOut - 1);
-    }, 1000);
+    }, 1000); // 1000 milliseconds = 1 second
 
     return () => {
       clearTimeout(timer);
-      setTimeout(() => {}, 0);
     }; // return with cleanup function
   }, [paymentTimeOut]);
 
@@ -338,7 +346,7 @@ export default function Payments() {
           Checking the payment status...
         </p>
         <p style={{ fontSize: "22px", fontWeight: "600", color: "#39A454" }}>
-          {paymentTimeOut.toFixed(2)}
+        {formatTime(paymentTimeOut)}
         </p>
       </div>
 
@@ -391,6 +399,13 @@ export default function Payments() {
           aria-label="Close"
           onClick={() => {
             // setOpen(false)
+            if (window?.navigator?.platform == "iPhone") {
+              setGatewayData(upiData);
+              setQrcode(upi);
+              setEnableQr(true);
+              setOpen(true);
+              return
+            }
             window.location.replace(qrcode);
           }}
           style={{
