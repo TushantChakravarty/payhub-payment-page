@@ -27,7 +27,7 @@ const payMethods = [
 ];
 
 export default function Payments() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [openConfirm, setConfirm] = React.useState(false);
   const [enableQr, setEnableQr] = useState(false);
   const [openQr, setOpenQr] = useState(true);
@@ -71,12 +71,12 @@ export default function Payments() {
     checkPageExpiry(token)
       .then((response) => {
         if (response.responseCode !== 200) {
-           navigate("/expired");
+           //navigate("/expired");
           // return alert("Link Expired");
         }
       })
       .catch((error) => {
-         navigate('/expired')
+         //navigate('/expired')
         console.log("error", error);
       });
     if (data.amount != null) {
@@ -184,7 +184,7 @@ export default function Payments() {
         .then((response) => {
           if (response.responseCode !== 200) {
             // Handle the case where responseCode is not 200
-             navigate("/expired");
+             //navigate("/expired");
             // return alert("Link Expired");
           }
 
@@ -213,7 +213,7 @@ export default function Payments() {
                 setRemainingTime(timeDifferenceInSeconds);
               } else {
                 setRemainingTime(0);
-                navigate("/expired");
+                //navigate("/expired");
               }
             };
 
@@ -228,7 +228,7 @@ export default function Payments() {
         })
         .catch((error) => {
           // Handle errors
-          navigate("/expired");
+          //navigate("/expired");
           console.log("error", error);
         });
     };

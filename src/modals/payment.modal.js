@@ -264,6 +264,7 @@ export function PaymentModal({ open, setOpen, data }) {
                   width: "100%",
                   padding: ".75rem 1rem",
                   border: "1px solid #6099C4",
+                  backgroundColor:'#4286f5'
                 }}
               >
                 <p
@@ -271,7 +272,7 @@ export function PaymentModal({ open, setOpen, data }) {
                     textAlign: "center",
                     margin: "0",
                     textTransform: "uppercase",
-                    color: "#6099C4",
+                    color: "white",
                   }}
                 >
                   close
