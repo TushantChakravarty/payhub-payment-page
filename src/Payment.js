@@ -16,7 +16,7 @@ import "./App.css";
 const features = [
   { id: 1, desc: "OPEN YOUR PAYMENT APP" },
   { id: 2, desc: "SCAN THIS QR CODE" },
-  { id: 3, desc: "VERIFY THE PAYMENT DETAILS" },
+  { id: 3, desc: "VERIFY PAYMENT DETAILS" },
   { id: 4, desc: "CONFIRM THE TRANSACTION" },
 ];
 
