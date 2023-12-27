@@ -55,6 +55,7 @@
   width: 4rem;
   background: #e3e3e3;
   z-index: -1;
+  margin-left: 0.5rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -110,6 +111,7 @@
     width: 6rem;
     background: #e3e3e3;
     z-index: -1;
+    margin-left: 0.5rem;
   }
 }
 
@@ -120,6 +122,7 @@
     gap: 1rem;
     /* width: 100%; */
     padding: 0 1rem;
+    margin-right: 2.5rem;
   }
 
   .feature_description {
