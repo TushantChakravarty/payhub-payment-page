@@ -27,7 +27,7 @@ const payMethods = [
 ];
 
 export default function Payments() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [openConfirm, setConfirm] = React.useState(false);
   const [enableQr, setEnableQr] = useState(false);
   const [openQr, setOpenQr] = useState(true);
@@ -256,37 +256,26 @@ export default function Payments() {
           padding: "2rem 1rem",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           gap: "1rem",
         }}
       >
-        <div
+        {/* <div
           style={{
-            position: "relative",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
           }}
-        >
-          <p
-            style={{
-              position: "absolute",
-              fontSize: "8px",
-              fontWeight: "bold",
-              top: "-0.75rem",
-              left: "7rem",
-            }}
-          >
-            Powered by PayHub
-          </p>
-          <img
-            src={payHub}
-            alt="brand"
-            style={{
-              width: "10rem",
-            }}
-          />
-        </div>
+        > */}
+        <img
+          src={payHub}
+          alt="brand"
+          style={{
+            width: "10rem",
+          }}
+        />
+        {/* </div> */}
         <Divider sx={{ height: ".25rem", width: "360px" }} />
       </div>
 
@@ -348,13 +337,7 @@ export default function Payments() {
                   }}
                 >
                   {" "}
-                  <Divider
-                    style={{
-                      width: "6rem",
-                      background: "#E3E3E3",
-                      zIndex: -1,
-                    }}
-                  />
+                  <Divider className="divider" />
                 </div>
               )}
             </div>
@@ -416,8 +399,8 @@ export default function Payments() {
       //   margin: ".69rem 0 2rem 0",
       // }}
       >
-        <Button
-          //   type="button"
+        <button
+          // type="button"
           className="btn-outline-light m-0 payButton"
           data-dismiss="modal"
           aria-label="Close"
@@ -432,10 +415,10 @@ export default function Payments() {
             }
             window.location.replace(qrcode);
           }}
-          variant="solid"
+          // variant="plain"
         >
           <p className="payButtonText">PAY</p>
-        </Button>
+        </button>
       </div>
 
       {/* <div
