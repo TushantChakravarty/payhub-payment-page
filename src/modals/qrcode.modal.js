@@ -66,49 +66,49 @@ export function QrcodeModal({ open, setOpen, data }) {
                       <span className="check-icon"></span>
                       <div
                         style={{
-                          height: "6rem",
+                          height: "3rem",
                           position: "absolute",
-                          width: "6rem",
-                          borderTop: "10px solid #535353",
-                          borderLeft: "10px solid #535353",
+                          width: "3rem",
+                          borderTop: "7px solid #535353",
+                          borderLeft: "7px solid #535353",
                           top: "3rem",
-                          left: "2.5rem",
+                          left: "4rem",
                           borderRadius: "9px",
                         }}
                       />
                       <div
                         style={{
-                          height: "6rem",
+                          height: "3rem",
                           position: "absolute",
-                          width: "6rem",
-                          borderBottom: "10px solid #535353",
-                          borderLeft: "10px solid #535353",
+                          width: "3rem",
+                          borderBottom: "7px solid #535353",
+                          borderLeft: "7px solid #535353",
                           bottom: "3rem",
-                          left: "2.5rem",
+                          left: "4rem",
                           borderRadius: "9px",
                         }}
                       />
                       <div
                         style={{
-                          height: "6rem",
+                          height: "3rem",
                           position: "absolute",
-                          width: "6rem",
-                          borderTop: "10px solid #535353",
-                          borderRight: "10px solid #535353",
+                          width: "3rem",
+                          borderTop: "7px solid #535353",
+                          borderRight: "7px solid #535353",
                           top: "3rem",
-                          right: "2.5rem",
+                          right: "4rem",
                           borderRadius: "9px",
                         }}
                       />
                       <div
                         style={{
-                          height: "6rem",
+                          height: "3rem",
                           position: "absolute",
-                          width: "6rem",
-                          borderBottom: "10px solid #535353",
-                          borderRight: "10px solid #535353",
+                          width: "3rem",
+                          borderBottom: "7px solid #535353",
+                          borderRight: "7px solid #535353",
                           bottom: "3rem",
-                          right: "2.5rem",
+                          right: "4rem",
                           borderRadius: "9px",
                         }}
                       />
@@ -131,7 +131,7 @@ export function QrcodeModal({ open, setOpen, data }) {
                             className="img-fluid" /> */}
                         <QRCodeSVG
                           value={data}
-                          size={200}
+                          size={150}
                           style={{
                             filter: open
                               ? "blur(0)"

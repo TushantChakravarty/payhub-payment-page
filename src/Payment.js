@@ -272,7 +272,7 @@ export default function Payments() {
           src={payHub}
           alt="brand"
           style={{
-            width: "10rem",
+            width: "8rem",
           }}
         />
         {/* </div> */}
@@ -376,13 +376,16 @@ export default function Payments() {
           gap: "1rem",
         }}
       >
-        {payMethods.map((image) => {
+        <img src={googlePay} alt="payment method" className="image paytm" />{" "}
+        <img src={payTm} alt="payment method" className="image paytm" />{" "}
+        <img src={phonePe} alt="payment method" className="image" />
+        {/* {payMethods.map((image) => {
           return (
             <div key={image.id}>
               <img src={image.icon} alt="payment method" className="image" />
             </div>
           );
-        })}
+        })} */}
       </div>
 
       <div
