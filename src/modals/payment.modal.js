@@ -45,7 +45,7 @@ export function PaymentModal({ open, setOpen, data }) {
                 >
                   <p
                     style={{
-                      color: "#D4DCDF",
+                      color: "#9aa2a4",
                       fontSize: "15px",
                       fontWeight: "bold",
                     }}
