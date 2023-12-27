@@ -131,7 +131,7 @@ export function QrcodeModal({ open, setOpen, data }) {
                             className="img-fluid" /> */}
                         <QRCodeSVG
                           value={data}
-                          size={210}
+                          size={200}
                           style={{
                             filter: open
                               ? "blur(0)"
