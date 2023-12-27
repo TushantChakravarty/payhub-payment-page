@@ -63,13 +63,13 @@ export function PaymentModal({ open, setOpen, data }) {
                     marginLeft: "1.25rem",
                   }}
                 >
-                  <label for="radio-card-1" className="radio-card">
+                  <label for="radio-card-0" className="radio-card">
                     <input
                       type="radio"
                       name="radio-card"
-                      id="radio-card-1"
+                      id="radio-card-0"
                       onClick={() => {
-                        window.location.replace(data.paytmurl);
+                        window.location.replace(data.upi);
                       }}
                     />
                     <div
@@ -142,7 +142,7 @@ export function PaymentModal({ open, setOpen, data }) {
                     </div>
                   </label>
                   <label
-                    for="radio-card-3"
+                    for="radio-card-4"
                     className="radio-card"
                     onClick={() => {
                       window.location.replace(data.phonepeurl);
@@ -151,7 +151,7 @@ export function PaymentModal({ open, setOpen, data }) {
                     <input
                       type="radio"
                       name="radio-card"
-                      id="radio-card-2"
+                      id="radio-card-4"
                       onClick={() => {
                         window.location.replace(data.phonepeurl);
                       }}
@@ -207,7 +207,9 @@ export function PaymentModal({ open, setOpen, data }) {
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={() => {
-                  setOpen(false);
+                  //setOpen(false);
+                  window.location.replace(data.upi);
+
                 }}
                 size="md"
                 variant="outlined"
@@ -228,6 +230,51 @@ export function PaymentModal({ open, setOpen, data }) {
                   }}
                 >
                   other upi apps
+                </p>
+              </Button>
+            </div>
+            <div
+              className="modal-footer justify-content-end p-0 mt-3 buttonContainer"
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                flexDirection: "column-reverse",
+                gap: "1rem",
+                alignItems: "center",
+                margin: "1rem",
+                padding: ".5rem",
+                border: "none",
+              }}
+            >
+              <Button
+                type="button"
+                className="btn-outline-light m-0 button"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick={() => {
+                  setOpen(false);
+                  //window.location.replace(data.upi);
+
+                }}
+                size="md"
+                variant="outlined"
+                style={{
+                  borderRadius: 10,
+                  // width: "20.4375rem",
+                  width: "100%",
+                  padding: ".75rem 1rem",
+                  border: "1px solid #6099C4",
+                }}
+              >
+                <p
+                  style={{
+                    textAlign: "center",
+                    margin: "0",
+                    textTransform: "uppercase",
+                    color: "#6099C4",
+                  }}
+                >
+                  close
                 </p>
               </Button>
             </div>
