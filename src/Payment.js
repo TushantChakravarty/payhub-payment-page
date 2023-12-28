@@ -4,7 +4,7 @@ import { RedirectModal } from "./modals/redirect.modal";
 import { QrcodeModal } from "./modals/qrcode.modal";
 import { Box, Button, Divider } from "@mui/joy";
 import alertIcon from "./alert.png";
-import { checkPageExpiry, checkPaymentTime } from "./paymentController";
+import { checkPageExpiry, checkPaymentStatus, checkPaymentTime } from "./paymentController";
 import { Router, useNavigate } from "react-router-dom";
 import googlePay from "./images/google-pay.png";
 import payTm from "./images/paytm.png";
@@ -67,6 +67,41 @@ export default function Payments() {
     gpayurl: gpay,
   };
   //console.log(token);
+  useEffect(() => {
+    // Function to fetch payment status
+    const fetchPaymentStatus = async () => {
+      try {
+        const response = await checkPaymentStatus(token, txId);
+
+        if (response.responseCode !== 200) {
+          // navigate("/expired");
+          // return alert("Link Expired");
+        } else if (response.responseData === "success") {
+          if (redirect != null) {
+            // setConfirm(true);
+            window.location.assign(redirect);
+            return;
+          }
+          navigate("/success");
+        } else if (response.responseData === "failed") {
+           navigate("/expired");
+        }
+      } catch (error) {
+        navigate("/expired");
+        console.log("error", error);
+      }
+    };
+
+    // Initial call
+    fetchPaymentStatus();
+
+    // Set up interval to run the function every 15 seconds
+    const intervalId = setInterval(fetchPaymentStatus, 15000);
+
+    // Cleanup function to clear the interval when the component is unmounted
+    return () => clearInterval(intervalId);
+  }, [token, txId, redirect, navigate]);
+
   useEffect(() => {
     checkPageExpiry(token)
       .then((response) => {

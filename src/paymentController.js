@@ -109,3 +109,30 @@ export async function checkPaymentTime(token,id)
      })
   return response 
 }
+
+export async function checkPaymentStatus(token,id)
+{
+  const response = await fetch(`${apiUrl}/admin/getTransactionStatus`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin' : '*',
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    },
+    body: JSON.stringify({
+        "token":token,
+        "transactionId":id
+      })  
+  })
+     .then(resp => resp.json())
+     .then(json =>{
+       //console.log(json)
+       if(json)
+       return json
+      return false
+      })
+     .catch((error)=>{
+      console.log(error)
+     })
+  return response 
+}
