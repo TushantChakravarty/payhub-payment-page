@@ -403,9 +403,9 @@ export default function Payments() {
       //   margin: ".69rem 0 2rem 0",
       // }}
       >
-        <button
+        <Button
           // type="button"
-          className="btn-outline-light m-0 payButton"
+          className=" m-0 payButton"
           data-dismiss="modal"
           aria-label="Close"
           onClick={() => {
@@ -419,10 +419,10 @@ export default function Payments() {
             }
             window.location.replace(qrcode);
           }}
-          // variant="plain"
+          variant="solid"
         >
           <p className="payButtonText">PAY</p>
-        </button>
+        </Button>
       </div>
 
       {/* <div
