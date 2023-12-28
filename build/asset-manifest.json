@@ -1,7 +1,12 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.356ab260.css",
     "main.js": "/static/js/main.52586dc7.js",
+=======
+    "main.css": "/static/css/main.377be550.css",
+    "main.js": "/static/js/main.aaeded21.js",
+>>>>>>> 73c04b71aa2acefffb90f72e49fd7d242405d0d6
     "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
     "static/media/inter-latin-ext-400-normal.woff": "/static/media/inter-latin-ext-400-normal.3ccf133441ba225afa51.woff",
     "static/media/payhub-black-transformed.png": "/static/media/payhub-black-transformed.a46ebbea3db4316a79e7.png",
@@ -25,6 +30,7 @@
     "static/media/inter-vietnamese-400-normal.woff2": "/static/media/inter-vietnamese-400-normal.789afb71d327988e2fc8.woff2",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
+<<<<<<< HEAD
     "main.356ab260.css.map": "/static/css/main.356ab260.css.map",
     "main.52586dc7.js.map": "/static/js/main.52586dc7.js.map",
     "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
@@ -32,5 +38,14 @@
   "entrypoints": [
     "static/css/main.356ab260.css",
     "static/js/main.52586dc7.js"
+=======
+    "main.377be550.css.map": "/static/css/main.377be550.css.map",
+    "main.aaeded21.js.map": "/static/js/main.aaeded21.js.map",
+    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.377be550.css",
+    "static/js/main.aaeded21.js"
+>>>>>>> 73c04b71aa2acefffb90f72e49fd7d242405d0d6
   ]
 }
