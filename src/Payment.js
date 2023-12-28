@@ -16,7 +16,7 @@ import "./App.css";
 const features = [
   { id: 1, desc: "OPEN YOUR PAYMENT APP" },
   { id: 2, desc: "SCAN THIS QR CODE" },
-  { id: 3, desc: "VERIFY PAYMENT DETAILS" },
+  { id: 3, desc: "VERIFY PAYMENT" },
   { id: 4, desc: "CONFIRM THE TRANSACTION" },
 ];
 
@@ -71,7 +71,7 @@ export default function Payments() {
     checkPageExpiry(token)
       .then((response) => {
         if (response.responseCode !== 200) {
-          // navigate("/expired");
+           navigate("/expired");
           // return alert("Link Expired");
         }
       })
@@ -213,7 +213,7 @@ export default function Payments() {
                 setRemainingTime(timeDifferenceInSeconds);
               } else {
                 setRemainingTime(0);
-                // navigate("/expired");
+                 navigate("/expired");
               }
             };
 
@@ -228,7 +228,7 @@ export default function Payments() {
         })
         .catch((error) => {
           // Handle errors
-          // navigate("/expired");
+           navigate("/expired");
           console.log("error", error);
         });
     };
