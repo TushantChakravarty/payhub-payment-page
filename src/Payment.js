@@ -184,7 +184,7 @@ export default function Payments() {
         .then((response) => {
           if (response.responseCode !== 200) {
             // Handle the case where responseCode is not 200
-            //  navigate("/expired");
+              navigate("/expired");
             // return alert("Link Expired");
           }
 
@@ -403,9 +403,9 @@ export default function Payments() {
       //   margin: ".69rem 0 2rem 0",
       // }}
       >
-        <button
+        {/* <Button
           // type="button"
-          className="btn-outline-light m-0 payButton"
+          className=" m-0 payButton"
           data-dismiss="modal"
           aria-label="Close"
           onClick={() => {
@@ -419,10 +419,49 @@ export default function Payments() {
             }
             window.location.replace(qrcode);
           }}
-          // variant="plain"
+          variant="solid"
         >
           <p className="payButtonText">PAY</p>
-        </button>
+        </Button> */}
+
+        <Button
+          type="button"
+          className="btn-outline-light m-0 button payButton"
+          data-dismiss="modal"
+          aria-label="Close"
+          onClick={() => {
+            // setOpen(false)
+            if (window?.navigator?.platform == "iPhone") {
+              setGatewayData(upiData);
+              setQrcode(upi);
+              setEnableQr(true);
+              setOpen(true);
+              return;
+            }
+            window.location.replace(qrcode);
+          }}
+          variant="outlined"
+          style={{
+            borderRadius: "10px",
+            width: "16.75rem",
+            padding: " 0.75rem",
+            fontFamily: "Open Sans",
+            backgroundColor: "#4286f5",
+            outline: "none",
+            border: "0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1.5rem",
+              margin: "0",
+              fontWeight: "bold",
+              color: "#ffffff",
+            }}
+          >
+            PAY
+          </p>
+        </Button>
       </div>
 
       {/* <div
