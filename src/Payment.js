@@ -72,7 +72,7 @@ export default function Payments() {
     const fetchPaymentStatus = async () => {
       try {
         const response = await checkPaymentStatus(token, txId);
-
+        console.log(response)
         if (response.responseCode !== 200) {
           // navigate("/expired");
           // return alert("Link Expired");
