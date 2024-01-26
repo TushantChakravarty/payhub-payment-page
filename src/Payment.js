@@ -74,7 +74,11 @@ export default function Payments() {
         const response = await checkPaymentStatus(token, txId);
         console.log(response)
         if (response.responseCode !== 200) {
-          // navigate("/expired");
+           navigate("/expired");
+           setGatewayData({});
+           setQrcode({});
+           setEnableQr(false);
+           setOpen(false);
           // return alert("Link Expired");
         } else if (response.responseData === "success") {
           if (redirect != null) {
@@ -107,6 +111,10 @@ export default function Payments() {
       .then((response) => {
         if (response.responseCode !== 200) {
            navigate("/expired");
+           setGatewayData({});
+          setQrcode({});
+          setEnableQr(false);
+          setOpen(false);
           // return alert("Link Expired");
         }
       })
@@ -196,9 +204,9 @@ export default function Payments() {
     const handleLocationChange = () => {
       // This function will be called whenever the URL changes.
       // You can perform actions or trigger functions here.
-      console.log("URL changed:", window.location.href);
+      //console.log("URL changed:", window.location.href);
       if (redirect != null) {
-        setConfirm(true);
+        //setConfirm(true);
       }
     };
 
@@ -383,7 +391,7 @@ export default function Payments() {
 
       <div className="payment_status">
         <p style={{ fontSize: "14px", fontWeight: "600", margin: 0 }}>
-          Checking the payment status...
+          Payment Page Expires in ...
         </p>
         <p
           style={{
