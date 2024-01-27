@@ -15,7 +15,7 @@ import "./App.css";
 
 const features = [
   { id: 1, desc: "OPEN YOUR PAYMENT APP" },
-  { id: 2, desc: "SCAN THIS QR CODE" },
+  { id: 2, desc: "SCAN QR CODE OR CLICK THE BUTTON" },
   { id: 3, desc: "VERIFY PAYMENT" },
   { id: 4, desc: "CONFIRM THE TRANSACTION" },
 ];
@@ -75,10 +75,10 @@ export default function Payments() {
         console.log(response)
         if (response.responseCode !== 200) {
            //navigate("/expired");
-           setGatewayData({});
-           setQrcode({});
-           setEnableQr(false);
-           setOpen(false);
+          //  setGatewayData({});
+          //  setQrcode({});
+          //  setEnableQr(false);
+          //  setOpen(false);
           // return alert("Link Expired");
         } else if (response.responseData === "success") {
           if (redirect != null) {
@@ -134,28 +134,28 @@ export default function Payments() {
           setGatewayData(upiData);
           setQrcode(upi);
           setEnableQr(true);
-          setOpen(true);
+          //setOpen(true);
         } else {
           setEnableQr(true);
           setGatewayData(upi);
           setQrcode(upi);
-          window.location.replace(upi);
+         // window.location.replace(upi);
         }
       }
       // })
       else if (gateway == "payhubp") {
-        console.log(qr);
+        //console.log(qr);
         setEnableQr(true);
         setGatewayData(qr);
         setQrcode(qr);
 
-        window.location.replace(qr);
+        //window.location.replace(qr);
       } else if (gateway == "payhubA") {
         if (window?.navigator?.platform == "iPhone") {
           setGatewayData(upiData);
           setQrcode(upi);
           setEnableQr(true);
-          setOpen(true);
+         // setOpen(true);
           return;
         }
         setEnableQr(true);
@@ -163,20 +163,20 @@ export default function Payments() {
         setGatewayData(decodeUri);
         setQrcode(decodeUri);
 
-        window.location.replace(decodeUri);
+       // window.location.replace(decodeUri);
       } else if (gateway == "payhubi") {
-        console.log(qr);
+       // console.log(qr);
         setEnableQr(true);
 
         const decodeUri = decodeURIComponent(qr);
-        console.log(decodeUri);
-        window.location.replace(decodeUri);
+        //console.log(decodeUri);
+       // window.location.replace(decodeUri);
       } else if (gateway == "payhubpt") {
         if (window?.navigator?.platform == "iPhone") {
           setGatewayData(upiData);
           setQrcode(upi);
           setEnableQr(true);
-          setOpen(true);
+         // setOpen(true);
           return;
         }
         setEnableQr(true);
@@ -184,13 +184,13 @@ export default function Payments() {
         setGatewayData(decodeUri);
         setQrcode(decodeUri);
 
-        window.location.replace(decodeUri);
+       // window.location.replace(decodeUri);
       } else if (gateway == "payhubSt") {
         if (window?.navigator?.platform == "iPhone") {
           setGatewayData(upiData);
           setQrcode(upi);
           setEnableQr(true);
-          setOpen(true);
+          //setOpen(true);
           return;
         }
         setEnableQr(true);
@@ -198,7 +198,7 @@ export default function Payments() {
         setGatewayData(decodeUri);
         setQrcode(decodeUri);
 
-        window.location.replace(decodeUri);
+       // window.location.replace(decodeUri);
       }
     }
     const handleLocationChange = () => {
