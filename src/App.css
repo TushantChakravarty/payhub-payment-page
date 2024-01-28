@@ -3,11 +3,11 @@
 }
 
 .image {
-  width: 5rem;
+  width: 3rem;
 }
 
 .paytm {
-  width: 5rem;
+  width: 3rem;
 }
 
 .features_container {
@@ -42,7 +42,7 @@
 .payButton {
   border-radius: 10px;
   width: 16.75rem;
-  padding: 0 0.75rem;
+  padding: 0 0.5rem;
   font-family: "Open Sans";
   background-color: #4286f5;
   outline: none;

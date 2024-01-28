@@ -30,14 +30,14 @@ export default function Payments() {
   const [open, setOpen] = React.useState(false);
   const [openConfirm, setConfirm] = React.useState(false);
   const [enableQr, setEnableQr] = useState(false);
-  const [openQr, setOpenQr] = useState(true);
+  const [openQr, setOpenQr] = useState(false);
   const [qrcode, setQrcode] = useState("");
   const [gatewayData, setGatewayData] = React.useState();
   const urlParams = new URLSearchParams(window.location.search);
   const navigate = useNavigate();
   const [remainingTime, setRemainingTime] = useState(0);
 
-  let amount = urlParams.get("amount");
+  let amount = urlParams.get("amount")||100;
   let email = urlParams.get("email");
   let username = urlParams.get("username");
   let phone = urlParams.get("phone");
@@ -323,7 +323,7 @@ export default function Payments() {
         <Divider sx={{ height: ".25rem", width: "360px" }} />
       </div>
 
-      <div className="features_container">
+      {/* <div className="features_container">
         {features.map((item, index) => {
           return (
             <div
@@ -387,7 +387,8 @@ export default function Payments() {
             </div>
           );
         })}
-      </div>
+      </div> */}
+       
 
       <div className="payment_status">
         <p style={{ fontSize: "14px", fontWeight: "600", margin: 0 }}>
@@ -404,13 +405,31 @@ export default function Payments() {
           {formatTime(remainingTime)}
         </p>
       </div>
+      {amount&& <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
+         <p
+            style={{
+              fontSize: "1.5rem",
+              margin: "0.1rem",
+              fontWeight: "bold",
+              color: "black",
+              fontFamily:'sans-serif'
+            }}
+          >
+        ₹ {amount}
+          </p>
+        </div>}
 
       <PaymentModal open={open} setOpen={setOpen} data={gatewayData} />
       <RedirectModal open={openConfirm} setOpen={setConfirm} data={redirect} />
 
-      <div>
-        <QrcodeModal open={openQr} setOpen={setOpenQr} data={qrcode} />
-      </div>
+     
 
       <div
         style={{
@@ -420,9 +439,21 @@ export default function Payments() {
           gap: "1rem",
         }}
       >
-        <img src={googlePay} alt="payment method" className="image paytm" />{" "}
+         <p
+            style={{
+              fontSize: "1.2rem",
+              margin: "0.1rem",
+              fontWeight: "bold",
+              color: "grey",
+              fontFamily:'sans-serif'
+            }}
+          >
+        Select Payment Method
+          </p>
+        {/* <img src={googlePay} alt="payment method" className="image paytm" />{" "}
         <img src={payTm} alt="payment method" className="image paytm" />{" "}
-        <img src={phonePe} alt="payment method" className="image" />
+        <img src={phonePe} alt="payment method" className="image" /> */}
+        </div>
         {/* {payMethods.map((image) => {
           return (
             <div key={image.id}>
@@ -430,9 +461,14 @@ export default function Payments() {
             </div>
           );
         })} */}
-      </div>
 
       <div
+      style={{
+        display:'flex',
+        flexDirection:'column',
+        //justifyContent:'space-evenly'
+        //justifyContent:'space-around'
+      }}
       // style={{
       //   display: "flex",
       //   width: "100%",
@@ -487,25 +523,78 @@ export default function Payments() {
           style={{
             borderRadius: "10px",
             width: "16.75rem",
-            padding: " 0.75rem",
+            padding: " 0.20rem",
             fontFamily: "Open Sans",
-            backgroundColor: "#4286f5",
+            backgroundColor: "transparent",
+            //border:'2px solid blue',
             outline: "none",
-            border: "0",
+            border: "2px solid #ADD8E6",
           }}
         >
           <p
             style={{
-              fontSize: "1.5rem",
-              margin: "0",
+              fontSize: "1.2rem",
+              margin: "0.1rem",
               fontWeight: "bold",
-              color: "#ffffff",
+              color: "#43A6C6",
             }}
           >
-            PAY
+             <img src={googlePay} alt="payment method" className="image paytm" />{" "}
+        <img src={payTm} alt="payment method" className="image paytm" />{" "}
+        <img src={phonePe} alt="payment method" className="image" /> 
+        <br/>
+        Select upi app
+          </p>
+        </Button>
+        <Button
+          type="button"
+          className="btn-outline-light mt-2 button payButton"
+          data-dismiss="modal"
+          aria-label="Close"
+          onClick={() => {
+            setOpenQr(!openQr)
+            // setOpen(false)
+            // if (window?.navigator?.platform == "iPhone") {
+            //   setGatewayData(upiData);
+            //   setQrcode(upi);
+            //   setEnableQr(true);
+            //   setOpen(true);
+            //   return;
+            // }
+            // window.location.replace(qrcode);
+          }}
+          variant="outlined"
+          style={{
+            borderRadius: "10px",
+            width: "16.75rem",
+            padding: " 0.20rem",
+            fontFamily: "Open Sans",
+            backgroundColor: "transparent",
+            //border:'2px solid blue',
+            outline: "none",
+            border: "2px solid #ADD8E6",
+            //marginTop:"10px"
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1.2rem",
+              margin: "0.1rem",
+              fontWeight: "bold",
+              color: "#43A6C6",
+            }}
+          >
+        Open QR Code
           </p>
         </Button>
       </div>
+      {openQr&&
+      <div style={{
+        marginTop:"50px"
+      }}>
+        <QrcodeModal open={openQr} setOpen={setOpenQr} data={qrcode} />
+      </div>
+      }
 
       {/* <div
         style={{
