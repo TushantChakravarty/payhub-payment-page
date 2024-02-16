@@ -185,7 +185,23 @@ export default function Payments() {
         setQrcode(decodeUri);
 
        // window.location.replace(decodeUri);
-      } else if (gateway == "payhubSt") {
+      }
+      else if (gateway == "payhubPE") {
+        if (window?.navigator?.platform == "iPhone") {
+          setGatewayData(upiData);
+          setQrcode(upi);
+          setEnableQr(true);
+         // setOpen(true);
+          return;
+        }
+        setEnableQr(true);
+        const decodeUri = decodeURIComponent(qr);
+        setGatewayData(decodeUri);
+        setQrcode(decodeUri);
+
+       // window.location.replace(decodeUri);
+      }  
+      else if (gateway == "payhubSt") {
         if (window?.navigator?.platform == "iPhone") {
           setGatewayData(upiData);
           setQrcode(upi);
