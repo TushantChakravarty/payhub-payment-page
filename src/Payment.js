@@ -187,6 +187,7 @@ export default function Payments() {
        // window.location.replace(decodeUri);
       }
       else if (gateway == "payhubPE") {
+        console.log('upiData',upiData,upi)
         if (window?.navigator?.platform == "iPhone") {
           setGatewayData(upiData);
           setQrcode(upi);
@@ -197,7 +198,7 @@ export default function Payments() {
         setEnableQr(true);
         const decodeUri = decodeURIComponent(qr);
         setGatewayData(decodeUri);
-        setQrcode(decodeUri);
+        setQrcode(qr);
 
        // window.location.replace(decodeUri);
       }  
