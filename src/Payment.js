@@ -198,7 +198,7 @@ export default function Payments() {
         setEnableQr(true);
         const decodeUri = decodeURIComponent(qr);
         setGatewayData(decodeUri);
-        setQrcode(qr);
+        setQrcode(upi);
 
        // window.location.replace(decodeUri);
       }  
