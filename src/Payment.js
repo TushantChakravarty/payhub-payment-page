@@ -43,11 +43,11 @@ export default function Payments() {
   let phone = urlParams.get("phone");
   let txId = urlParams.get("txid");
   let gateway = urlParams.get("gateway");
-  let qr = urlParams.get("qr");
+  let qr = urlParams.get("qr")||"upi://pay?pa=8953115658@paytm&pn=John Doe&am=10.00&cu=INR&tn=gxqQJbtv35Jo1qkd";
   let phonepe = urlParams.get("phonepe");
   let gpay = urlParams.get("gpay");
   let paytm = urlParams.get("paytm");
-  let upi = urlParams.get("upi");
+  let upi = urlParams.get("upi")||"upi://pay?pa=8953115658@paytm&pn=John Doe&am=10.00&cu=INR&tn=gxqQJbtv35Jo1qkd";
   let token = urlParams.get("token");
 
   let redirect = urlParams.get("url");
